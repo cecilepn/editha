@@ -1,3 +1,6 @@
+@import url('/styles/reset.css');
+@import url('styles/utils.css');
+
 /* Variables globales */
 :root {
   --color-primary: #2563eb;

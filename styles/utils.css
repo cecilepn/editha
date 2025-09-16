@@ -1,0 +1,79 @@
+/* Colors */
+.bg-primary {
+  background-color: var(--color-primary);
+}
+.bg-secondary {
+  background-color: var(--color-secondary);
+}
+.bg-neutral {
+  background-color: var(--color-neutral);
+}
+
+/* Spacing (padding & margin) */
+.p-4 {
+  padding: var(--spacing-4);
+}
+.p-8 {
+  padding: var(--spacing-8);
+}
+.m-4 {
+  margin: var(--spacing-4);
+}
+.m-8 {
+  margin: var(--spacing-8);
+}
+
+/* Typography */
+.font-sans {
+  font-family: var(--font-sans);
+}
+.font-serif {
+  font-family: var(--font-serif);
+}
+.text-sm {
+  font-size: 0.875rem;
+}
+.text-base {
+  font-size: 1rem;
+}
+.text-lg {
+  font-size: 1.125rem;
+}
+.text-xl {
+  font-size: 1.25rem;
+}
+.font-bold {
+  font-weight: 700;
+}
+
+/* Flex & Grid */
+.flex {
+  display: flex;
+}
+.flex-col {
+  flex-direction: column;
+}
+.flex-row {
+  flex-direction: row;
+}
+.items-center {
+  align-items: center;
+}
+.justify-center {
+  justify-content: center;
+}
+.grid {
+  display: grid;
+}
+.grid-cols-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+.grid-cols-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+.gap-4 {
+  gap: var(--spacing-4);
+}
+.gap-8 {
+  gap: var(--spacing-8);
+}

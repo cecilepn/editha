@@ -1,0 +1,19 @@
+.configurator {
+  min-height: 100vh;
+}
+.productImage {
+  min-height: 600px;
+}
+
+.productInfos {
+  padding: 30px;
+}
+
+.icons {
+  gap: 10px;
+}
+
+.icons > img {
+  width: 25px;
+  height: 25px;
+}

@@ -1,0 +1,129 @@
+/* Screen-reader only helpers */
+
+/* Caché visuellement mais lisible par les lecteurs d'écran */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Visible pour les lecteurs d'écran, ET devient visible quand il reçoit le focus. Rend les éléments "skip links" accessibles au clavier. */
+.sr-only-focusable:active,
+.sr-only-focusable:focus {
+  position: static !important;
+  width: auto !important;
+  height: auto !important;
+  margin: 0 !important;
+  overflow: visible !important;
+  clip: auto !important;
+  white-space: normal !important;
+}
+
+/* Skip link (lien "Aller au contenu") */
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  z-index: 1000;
+}
+.skip-link:focus,
+.skip-link:active {
+  position: fixed;
+  left: 1rem;
+  top: 1rem;
+  width: auto;
+  height: auto;
+  padding: 0.5rem 0.75rem;
+  background: #fff;
+  color: #000;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  text-decoration: none;
+}
+
+/* Fallback pour navigateurs sans :focus-visible :
+   application style de focus global sur les éléments focusables */
+a:focus,
+button:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  box-shadow: 0 0 0 3px rgba(21, 156, 228, 0.35);
+  outline: none;
+  border-radius: 4px;
+}
+
+/* Eviter les "focus traps" visuels pour éléments désactivés */
+[disabled],
+[aria-disabled='true'] {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Préférences utilisateurs (reduced motion) */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Utilitaires pour roles ARIA et focus management */
+
+/* Éléments ayant rôle interactif mais non natif */
+[role='button'] {
+  cursor: pointer;
+}
+[tabindex='-1'] {
+  outline: none !important;
+}
+
+/* Images et médias accessibles */
+
+/* Forcer que les images décoratives puissent être cachées des lecteurs d'écran cas si le role="presentation" ou aria-hidden="true" donné côté HTML */
+.img-hidden-from-a11y[aria-hidden='true'] {
+  pointer-events: none;
+}
+
+/* Vidéos : contrôles visibles et focusables */
+video[controls] {
+  outline: none;
+}
+video:focus-visible {
+  outline: 3px solid Highlight;
+  outline-offset: 3px;
+}
+
+/* Inputs accessibles */
+input,
+.input {
+  min-height: 44px;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+}
+
+/* Helpers pour états ARIA */
+
+[aria-invalid='true'] {
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.15);
+  border-color: #dc3545;
+}
+
+[data-state='success'] {
+  border-color: #198754;
+}

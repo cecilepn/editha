@@ -4,102 +4,116 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Editha</title>
-    <link rel="stylesheet" href="/reset.css" />
-    <link rel="stylesheet" href="/global.css" />
-    <link rel="stylesheet" href="/styles/utils.css" />
+  <link rel="stylesheet" href="global.css" />
+  <link rel="stylesheet" href="styles/core/index.css" />
+  <link rel="stylesheet" href="styles/pages/homepage.css" />
   </head>
   <body>
     <app-header></app-header>
     <main>
+
       <!-- Presentation -->
-     <div class="container">
-      <div class="img-container">
-        <img src="/assets/editha.png" alt="" class="img-fit" />
-      </div>
-      <div class="text-container">
-        <h2 class="text-text-container">Lorem ipsum dolor sit amet.
-           Et impedit dolor ut esse dolores qui soluta minima ex consequatur modi!
+     <div class="w-full flex flex-col">
+        <div class="img-container w-full">
+          <img src="https://wallpaperaccess.com/full/4990824.png" alt="" class="object-cover w-full" />
+        </div>
+        <div class="text-container p-4">
+          <h2 class="h2">Lorem ipsum dolor sit amet.
+            Et impedit dolor ut esse dolores qui soluta minima ex consequatur modi!
             Vel dolorem iure ut deserunt dolorem ut sunt fuga in consequatur esse.</h2>
-      </div>
+        </div>
       </div>
       
       <!-- Cards 1 -->
-      <div class="cards-container">
-        <div class="card">
-          <div class="card-img-container">
-            <img src="/assets/card1.png" alt="" class="img-fit" />
+  <div class="cards-container flex gap-8 mt-8 justify-center">
+        <div class="card flex flex-col w-fit p-4">
+          <div class="card-img-container p-8">
+            <img src="https://wallpaperaccess.com/full/4990824.png" alt="" class="object-cover w-auto" />
           </div>
-          <div class="card-text-container">
-            <h3 class="card-text">Lorem ipsum dolor sit amet.</h3>
-            <h3 class="card-text">Lorem ipsum dolor sit amet.</h3>
-          </div>
-          <div class="card-price-container">
-            <p class="card-price">45,00€</p>
+          <div class="card-content-row mt-4">
+            <div class="card-text-container flex flex-col">
+              <h5>Lorem ipsum dolor sit amet.</h5>
+              <h5>Lorem ipsum dolor sit amet.</h5>
+            </div>
+            <div class="card-price-container ml-8">
+              <p class="body-m font-bold">45,00€</p>
+            </div>
           </div>
         </div>
-        <div class="card">
-          <div class="card-img-container">
-            <img src="/assets/card2.png" alt="" class="img-fit" />
+        <div class="card flex flex-col w-fit p-4">
+          <div class="card-img-container p-8">
+            <img src="https://wallpaperaccess.com/full/4990824.png" alt="" class="object-cover w-full" />
           </div>
-          <div class="card-text-container">
-            <h3 class="card-text">Lorem ipsum dolor sit amet.</h3>
-            <h3 class="card-text">Lorem ipsum dolor sit amet.</h3>
-          </div>
-          <div class="card-price-container">
-            <p class="card-price">45,00€</p>
+          <div class="card-content-row mt-4">
+            <div class="card-text-container flex flex-col">
+              <h5>Lorem ipsum dolor sit amet.</h5>
+              <h5>Lorem ipsum dolor sit amet.</h5>
+            </div>
+            <div class="card-price-container ml-8">
+              <p class="body-m font-bold">45,00€</p>
+            </div>
           </div>
         </div>
       </div>
 
       <!-- Configurator Outplay -->
-      <div class="configurator-container">
-        <div class="configurator-text-container">
-          <h2 class="configurator-text">Lorem ipsum dolor sit amet.</h2>
-          <p class="configurator-paragraph">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, quod.</p>
+      <div class="configurator-container flex flex-col items-center p-8">
+        <div class="configurator-text-container mb-4">
+          <h2 class="h2">Lorem ipsum dolor sit amet.</h2>
+          <p class="body-m">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, quod.</p>
         </div>
         <div class="button-container">
-          <button class="button">
-            <a href="#" class="button-link">Commencer</a>
-          </button>
+          <a href="#" class="button-link bg-primary p-4 font-bold text-base">Commencer</a>
+        </div>
       </div>
 
     
       <!-- Cards 2 -->
-      <div class="cards2-container">
-        <div class="card2">
-          <div class="card-img-container">
-            <img src="/assets/card2.png" alt="" class="img-fit" />
+      <div class="cards2-container flex flex-col gap-8 mt-8 justify-center">
+        <!-- Première card au-dessus -->
+        <div class="card2 card flex flex-col w-fit p-4 mx-auto">
+          <div class="card-img-container p-8">
+            <img src="https://wallpaperaccess.com/full/4990824.png" alt="" class="object-cover w-full" />
           </div>
-          <div class="card-text-container">
-            <h3 class="card-text">Lorem ipsum dolor sit amet.</h3>
-            <h3 class="card-text">Lorem ipsum dolor sit amet.</h3>
-          </div>
-          <div class="card-price-container">
-            <p class="card-price">39,00€</p>
-          </div>
-        </div>
-        <div class="card2">
-          <div class="card-img-container">
-            <img src="/assets/card2.png" alt="" class="img-fit" />
-          </div>
-          <div class="card-text-container">
-            <h3 class="card-text">Lorem ipsum dolor sit amet.</h3>
-            <h3 class="card-text">Lorem ipsum dolor sit amet.</h3>
-          </div>
-          <div class="card-price-container">
-            <p class="card-price">39,00€</p>
+          <div class="card-content-row mt-4">
+            <div class="card-text-container flex flex-col">
+              <h5>Lorem ipsum dolor sit amet.</h5>
+              <h5>Lorem ipsum dolor sit amet.</h5>
+            </div>
+            <div class="card-price-container ml-8">
+              <p class="body-m font-bold">39,00€</p>
+            </div>
           </div>
         </div>
-        <div class="card2">
-          <div class="card-img-container">
-            <img src="/assets/card2.png" alt="" class="img-fit" />
+        <!-- Les deux autres côte à côte -->
+        <div class="flex flex-row gap-8 justify-center">
+          <div class="card2 card flex flex-col w-fit p-4">
+            <div class="card-img-container p-8">
+              <img src="https://wallpaperaccess.com/full/4990824.png" alt="" class="object-cover w-full" />
+            </div>
+            <div class="card-content-row mt-4">
+              <div class="card-text-container flex flex-col">
+                <h5>Lorem ipsum dolor sit amet.</h5>
+                <h5>Lorem ipsum dolor sit amet.</h5>
+              </div>
+              <div class="card-price-container ml-8">
+                <p class="body-m font-bold">39,00€</p>
+              </div>
+            </div>
           </div>
-          <div class="card-text-container">
-            <h3 class="card-text">Lorem ipsum dolor sit amet.</h3>
-            <h3 class="card-text">Lorem ipsum dolor sit amet.</h3>
-          </div>
-          <div class="card-price-container">
-            <p class="card-price">39,00€</p>
+          <div class="card2 card flex flex-col w-fit p-4">
+            <div class="card-img-container p-8">
+              <img src="https://wallpaperaccess.com/full/4990824.png" alt="" class="object-cover w-full" />
+            </div>
+            <div class="card-content-row mt-4">
+              <div class="card-text-container flex flex-col">
+                <h5>Lorem ipsum dolor sit amet.</h5>
+                <h5>Lorem ipsum dolor sit amet.</h5>
+              </div>
+              <div class="card-price-container ml-8">
+                <p class="body-m font-bold">39,00€</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

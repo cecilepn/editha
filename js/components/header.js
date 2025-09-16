@@ -4,7 +4,7 @@ class Header extends HTMLElement {
       <header>
         <div>
           <a href="index.html" aria-label="Accueil Editha">
-            <img src="editha/images/logo.png" alt="Logo Editha">
+            <img src="http://freelogopng.com/images/all_img/1657952641google-logo-png-image.png" alt="Logo Editha">
           </a>
         </div>
         <nav aria-label="Navigation principale">
@@ -15,8 +15,9 @@ class Header extends HTMLElement {
             <li>
               <form action="pages/search.html" method="get" role="search" aria-label="Recherche">
                 <label for="header-search" class="visually-hidden"></label>
-                <input id="header-search" name="q" type="search" placeholder="Rechercher...">
-                <button type="submit">OK</button>
+                <a href="pages/search.html" aria-label="Recherche">
+                  <img src="https://tse1.mm.bing.net/th/id/OIP.j1sMPSP-emIbWhpgbf50zQHaHa?r=0&pid=Api" alt="Recherche" style="height: 24px; width: 24px; object-fit: contain; border: none; background: none; cursor: pointer;" />
+                </a>
               </form>
             </li>
             <li><a href="pages/cart.html">Panier</a></li>

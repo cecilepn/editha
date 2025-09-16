@@ -11,23 +11,6 @@ HTML, CSS, JS
 Cécile PHAN NGUYEN : https://github.com/cecilepn / DEV
 Andy RABARISON : https://github.com/Rabarison-Andy / DEV
 
-# Structure du projet
-
-/ images /
-/ svg
-/ js /
-/ components
-/ utils
-/ json
-/ pages
-/ styles /
-/ components
-/ core
-/ pages
-global.css
-index.html
-script.js
-
 # Fonctionnalités
 
 # Update :

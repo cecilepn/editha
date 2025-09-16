@@ -8,19 +8,140 @@
 .bg-neutral {
   background-color: var(--color-neutral);
 }
+.bg-black {
+  background-color: var(--color-black);
+}
 
-/* Spacing (padding & margin) */
-.p-4 {
-  padding: var(--spacing-4);
+.bg-white {
+  background-color: var(--color-white);
 }
-.p-8 {
-  padding: var(--spacing-8);
+
+/* color text */
+
+.text-black {
+  color: var(--color-black);
 }
-.m-4 {
-  margin: var(--spacing-4);
+.text-white {
+  color: var(--color-white);
 }
-.m-8 {
-  margin: var(--spacing-8);
+
+/* Padding global */
+.p-0 {
+  padding: 0;
+}
+.p-5 {
+  padding: 5px;
+}
+.p-10 {
+  padding: 10px;
+}
+.p-20 {
+  padding: 20px;
+}
+.p-30 {
+  padding: 30px;
+}
+.p-40 {
+  padding: 40px;
+}
+.p-50 {
+  padding: 50px;
+}
+.p-60 {
+  padding: 60px;
+}
+
+/* Padding X (left + right) */
+.px-0 {
+  padding-left: 0;
+  padding-right: 0;
+}
+.px-5 {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.px-10 {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.px-20 {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.px-30 {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.px-40 {
+  padding-left: 40px;
+  padding-right: 40px;
+}
+.px-50 {
+  padding-left: 50px;
+  padding-right: 50px;
+}
+.px-60 {
+  padding-left: 60px;
+  padding-right: 60px;
+}
+
+/* Padding Y (top + bottom) */
+.py-0 {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.py-5 {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.py-10 {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.py-20 {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.py-30 {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+.py-40 {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+.py-50 {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+.py-60 {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+/* Gap */
+
+.gap-5 {
+  gap: 5px;
+}
+
+.gap-10 {
+  gap: 10px;
+}
+.gap-20 {
+  gap: 20px;
+}
+.gap-30 {
+  gap: 30px;
+}
+.gap-40 {
+  gap: 40px;
+}
+.gap-50 {
+  gap: 50px;
+}
+.gap-60 {
+  gap: 60px;
 }
 
 /* Typography */
@@ -45,7 +166,6 @@
 .font-bold {
   font-weight: 700;
 }
-
 /* Flex & Grid */
 .flex {
   display: flex;
@@ -82,12 +202,6 @@
 }
 .grid-cols-3 {
   grid-template-columns: repeat(3, 1fr);
-}
-.gap-4 {
-  gap: var(--spacing-4);
-}
-.gap-8 {
-  gap: var(--spacing-8);
 }
 
 /* height & width */

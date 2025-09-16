@@ -1,19 +1,31 @@
-.configurator {
-  min-height: 100vh;
-}
+/* mobile first */
 .productImage {
   min-height: 600px;
 }
-
 .productInfos {
-  padding: 30px;
-}
-
-.icons {
-  gap: 10px;
+  padding-bottom: 30px;
 }
 
 .icons > img {
   width: 25px;
   height: 25px;
+}
+
+/* desktop */
+@media (min-width: 1024px) {
+  .containerConfig {
+    display: flex;
+  }
+  .sideRight {
+    padding: 0px 60px 60px 60px;
+  }
+
+  .productImage {
+    max-width: 50%;
+    height: 100%;
+  }
+  .recommendations {
+    display: flex;
+    gap: 30px;
+  }
 }

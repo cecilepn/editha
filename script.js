@@ -1,2 +1,2 @@
-import './js/header.js'
-import './js/footer.js'
+import './js/components/header.js'
+import './js/components/footer.js'

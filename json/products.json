@@ -1,0 +1,82 @@
+{
+  "books": [
+    {
+      "title": "The Stranger",
+      "author": "Albert Camus",
+      "formats": {
+        "paperback": {
+          "price": 7.9
+        },
+        "hardcover": {
+          "price": 15.5
+        }
+      },
+      "cover_colors": {
+        "black": 0.5,
+        "white": 0.0,
+        "red": 1.0
+      },
+      "images": [
+        {
+          "url": "https://example.com/the-stranger-cover1.jpg"
+        },
+        {
+          "url": "https://example.com/the-stranger-cover2.jpg"
+        }
+      ],
+      "general_price": 15.5
+    },
+    {
+      "title": "1984",
+      "author": "George Orwell",
+      "formats": {
+        "paperback": {
+          "price": 8.2
+        },
+        "hardcover": {
+          "price": 17.0
+        }
+      },
+      "cover_colors": {
+        "gray": 0.2,
+        "midnight blue": 0.8,
+        "red": 1.0
+      },
+      "images": [
+        {
+          "url": "https://example.com/1984-cover1.jpg"
+        },
+        {
+          "url": "https://example.com/1984-cover2.jpg"
+        }
+      ],
+      "general_price": 17.0
+    },
+    {
+      "title": "The Little Prince",
+      "author": "Antoine de Saint-Exupéry",
+      "formats": {
+        "paperback": {
+          "price": 6.5
+        },
+        "hardcover": {
+          "price": 14.0
+        }
+      },
+      "cover_colors": {
+        "yellow": 0.5,
+        "light blue": 0.7,
+        "white": 0.0
+      },
+      "images": [
+        {
+          "url": "https://example.com/little-prince-cover1.jpg"
+        },
+        {
+          "url": "https://example.com/little-prince-cover2.jpg"
+        }
+      ],
+      "general_price": 14.0
+    }
+  ]
+}

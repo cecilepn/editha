@@ -77,3 +77,47 @@
 .gap-8 {
   gap: var(--spacing-8);
 }
+
+/* height & width */
+
+.h-full {
+  height: 100%;
+}
+.h-auto {
+  height: auto;
+}
+.h-fit {
+  height: fit-content;
+}
+
+.h-100vh {
+  height: 100vh;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.w-auto {
+  width: auto;
+}
+
+.w-fit {
+  width: fit-content;
+}
+
+.w-100vw {
+  width: 100vw;
+}
+
+/* others */
+
+.object-contain {
+  object-fit: contain;
+}
+.object-cover {
+  object-fit: cover;
+}
+.object-fill {
+  object-fit: fill;
+}

@@ -49,8 +49,7 @@ a {
 button,
 input,
 textarea,
-select,
-fieldset {
+select {
   font: inherit;
   background: none;
   border: none;

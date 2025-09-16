@@ -1,6 +1,4 @@
-@import url('/styles/reset.css');
-@import url('styles/utils.css');
-@import url('styles/headings.css');
+@import url('/styles/core/index.css');
 
 /* Variables globales */
 :root {

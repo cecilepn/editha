@@ -1,3 +1,5 @@
+@import url('/styles/core/index.css');
+
 /* Variables globales */
 :root {
   --color-primary: #2563eb;

@@ -1,4 +1,5 @@
 import { fetchProducts } from '../utils/fetchData.js'
+import { updatePrice } from '../utils/calculatePrice.js'
 
 // Constantes
 const STORAGE_KEY = 'editha_configurator_settings'
@@ -8,12 +9,12 @@ const STORAGE_EXPIRY_HOURS = 24
  * Gestion localStorage avec gestion d'erreurs
  */
 const storage = {
-  save: (settings) => {
+  save: settings => {
     try {
       const dataToSave = {
         ...settings,
         timestamp: Date.now(),
-        expiryTime: Date.now() + (STORAGE_EXPIRY_HOURS * 60 * 60 * 1000)
+        expiryTime: Date.now() + STORAGE_EXPIRY_HOURS * 60 * 60 * 1000
       }
       localStorage.setItem(STORAGE_KEY, JSON.stringify(dataToSave))
       console.log('Settings saved successfully:', settings)
@@ -29,7 +30,7 @@ const storage = {
       if (!savedData) return null
 
       const parsedData = JSON.parse(savedData)
-      
+
       if (Date.now() > parsedData.expiryTime) {
         localStorage.removeItem(STORAGE_KEY)
         console.log('Settings expired, removed from storage')
@@ -49,12 +50,12 @@ const storage = {
 /**
  * Affiche un message d'erreur à l'utilisateur
  */
-const showErrorMessage = (message) => {
+const showErrorMessage = message => {
   const errorElement = document.getElementById('errorMessage')
   if (errorElement) {
     errorElement.textContent = message
     errorElement.style.display = 'block'
-    setTimeout(() => errorElement.style.display = 'none', 5000)
+    setTimeout(() => (errorElement.style.display = 'none'), 5000)
   }
 }
 
@@ -63,24 +64,114 @@ document.addEventListener('DOMContentLoaded', async () => {
   if (!products.length) return
 
   const mainProduct = products[0]
-  
+
   // Initialiser les informations du produit
   initProductInfo(mainProduct)
-  
+
   // Initialiser les options (formats et couleurs)
   initProductOptions(mainProduct)
-  
+
   // Initialiser le texte personnalisé
   initCustomText()
-  
+
   // Initialiser les recommandations
   initRecommendations(products.slice(1, 4))
+  if (products.length > 0) {
+    const mainProduct = products[0]
+
+    // Main informations
+    const productImage = document.querySelector('.productImage')
+    const productTitle = document.querySelector('.productInfos h1')
+    const productDescription = document.querySelector('.productInfos p')
+
+    productImage.src = mainProduct.images[0].url
+    productImage.alt = mainProduct.title
+    productTitle.textContent = mainProduct.title
+    productDescription.textContent = mainProduct.description
+
+    // Zone de prix
+    const priceElement = document.createElement('p')
+    priceElement.classList.add('productPrice', 'h4')
+    document.querySelector('.productInfos').appendChild(priceElement)
+
+    // Formats options
+    const formatsFieldset = document.querySelector(
+      '.productOptions fieldset:nth-of-type(1)'
+    )
+    formatsFieldset.innerHTML = '<legend>Format</legend>'
+
+    Object.entries(mainProduct.formats).forEach(([format, details], index) => {
+      const id = `format-${index}`
+      const option = document.createElement('div')
+      option.classList.add('flex', 'items-center', 'gap-10')
+
+      option.innerHTML = `
+        <input type="radio" id="${id}" name="format" value="${format}" />
+        <label for="${id}">${format}</label>
+      `
+      formatsFieldset.appendChild(option)
+    })
+
+    // Colors options
+    const colorsFieldset = document.querySelector(
+      '.productOptions fieldset:nth-of-type(2)'
+    )
+    colorsFieldset.innerHTML = '<legend>Couleurs</legend>'
+
+    Object.keys(mainProduct.cover_colors).forEach((color, index) => {
+      const id = `color-${index}`
+      const option = document.createElement('div')
+      option.classList.add('flex', 'items-center', 'gap-10')
+
+      option.innerHTML = `
+        <input type="radio" id="${id}" name="color" value="${color}" />
+        <label for="${id}"><span class="sr-only">${color}</span></label>
+      `
+      colorsFieldset.appendChild(option)
+    })
+
+    // Listeners sur les options
+    document.querySelectorAll('input[name="format"]').forEach(input => {
+      input.addEventListener('change', () => updatePrice(mainProduct))
+    })
+
+    document.querySelectorAll('input[name="color"]').forEach(input => {
+      input.addEventListener('change', () => updatePrice(mainProduct))
+    })
+
+    // Listener sur le champ texte personnalisé
+    document.querySelector('#textcustom').addEventListener('input', () => {
+      updatePrice(mainProduct)
+    })
+
+    // Initialisation du prix
+    updatePrice(mainProduct)
+
+    // Recommended products
+    const recommendationsContainer = document.querySelector('#recommendations')
+    recommendationsContainer.innerHTML = ''
+
+    products.slice(1, 4).forEach(product => {
+      const card = document.createElement('div')
+      card.classList.add('productReco')
+
+      card.innerHTML = `
+        <img src="${product.images[0].url}" alt="${product.title}" class="productRecoImg w-full object-cover"/>
+        <div class="flex flex-col gap-10">
+          <h3>${product.title}</h3>
+          <p>Auteur : ${product.author}</p>
+          <p>${product.general_price} €</p>
+        </div>
+      `
+      recommendationsContainer.appendChild(card)
+    })
+  }
 })
 
 /**
  * Initialise les informations du produit principal
  */
-const initProductInfo = (product) => {
+const initProductInfo = product => {
   const productImage = document.querySelector('.productImage')
   const productTitle = document.querySelector('.productInfos h1')
   const productDescription = document.querySelector('.productInfos p')
@@ -94,11 +185,13 @@ const initProductInfo = (product) => {
 /**
  * Initialise et gère les options du produit (formats et couleurs)
  */
-const initProductOptions = (product) => {
+const initProductOptions = product => {
   // Formats
-  const formatsFieldset = document.querySelector('.productOptions fieldset:nth-of-type(1)')
+  const formatsFieldset = document.querySelector(
+    '.productOptions fieldset:nth-of-type(1)'
+  )
   formatsFieldset.innerHTML = '<legend>Format</legend>'
-  
+
   Object.entries(product.formats).forEach(([format, details], index) => {
     const option = document.createElement('div')
     option.classList.add('flex', 'items-center', 'gap-10')
@@ -110,9 +203,11 @@ const initProductOptions = (product) => {
   })
 
   // Couleurs
-  const colorsFieldset = document.querySelector('.productOptions fieldset:nth-of-type(2)')
+  const colorsFieldset = document.querySelector(
+    '.productOptions fieldset:nth-of-type(2)'
+  )
   colorsFieldset.innerHTML = '<legend>Couleurs</legend>'
-  
+
   Object.keys(product.cover_colors).forEach((color, index) => {
     const option = document.createElement('div')
     option.classList.add('flex', 'items-center', 'gap-10')
@@ -129,26 +224,32 @@ const initProductOptions = (product) => {
     if (savedSettings) {
       // Restaurer les sélections
       if (savedSettings.selectedFormat) {
-        const formatRadio = document.querySelector(`input[name="format"][value="${savedSettings.selectedFormat}"]`)
+        const formatRadio = document.querySelector(
+          `input[name="format"][value="${savedSettings.selectedFormat}"]`
+        )
         if (formatRadio) formatRadio.checked = true
       }
       if (savedSettings.selectedColor) {
-        const colorRadio = document.querySelector(`input[name="color"][value="${savedSettings.selectedColor}"]`)
+        const colorRadio = document.querySelector(
+          `input[name="color"][value="${savedSettings.selectedColor}"]`
+        )
         if (colorRadio) colorRadio.checked = true
       }
     }
 
     // Ajouter les listeners
-    document.querySelectorAll('input[name="format"], input[name="color"]').forEach(radio => {
-      radio.addEventListener('change', saveAllSettings)
-    })
+    document
+      .querySelectorAll('input[name="format"], input[name="color"]')
+      .forEach(radio => {
+        radio.addEventListener('change', saveAllSettings)
+      })
   }, 100)
 }
-    const recommendationsContainer = document.querySelector('#recommendations')
+const recommendationsContainer = document.querySelector('#recommendations')
 /**
  * Initialise les recommandations de produits
  */
-const initRecommendations = (products) => {
+const initRecommendations = products => {
   const recommendationsContainer = document.querySelector('#recommendations')
   recommendationsContainer.innerHTML = ''
 
@@ -176,18 +277,22 @@ const saveAllSettings = () => {
     const textSizeSelect = document.getElementById('textSize')
     const textFontSelect = document.getElementById('textFont')
     const customTextElement = document.getElementById('customTextOverlay')
-    
+
     const settings = {
       text: textInput?.value || '',
       fontSize: parseInt(textSizeSelect?.value) || 18,
       fontFamily: textFontSelect?.value || 'Arial, sans-serif',
-      color: document.querySelector('input[name="textColor"]:checked')?.value || '#000000',
+      color:
+        document.querySelector('input[name="textColor"]:checked')?.value ||
+        '#000000',
       position: {
         left: parseInt(customTextElement?.style.left) || 0,
         top: parseInt(customTextElement?.style.top) || 0
       },
-      selectedFormat: document.querySelector('input[name="format"]:checked')?.value,
-      selectedColor: document.querySelector('input[name="color"]:checked')?.value
+      selectedFormat: document.querySelector('input[name="format"]:checked')
+        ?.value,
+      selectedColor: document.querySelector('input[name="color"]:checked')
+        ?.value
     }
     storage.save(settings)
   } catch (error) {
@@ -262,7 +367,7 @@ const initCustomText = () => {
     textInput.value = savedSettings.text || ''
     textOverlay.textContent = savedSettings.text || ''
     textOverlay.style.display = savedSettings.text ? 'block' : 'none'
-    
+
     if (savedSettings.fontSize) {
       document.getElementById('textSize').value = savedSettings.fontSize
       textOverlay.style.fontSize = savedSettings.fontSize + 'px'
@@ -272,7 +377,9 @@ const initCustomText = () => {
       textOverlay.style.fontFamily = savedSettings.fontFamily
     }
     if (savedSettings.color) {
-      const colorRadio = document.querySelector(`input[name="textColor"][value="${savedSettings.color}"]`)
+      const colorRadio = document.querySelector(
+        `input[name="textColor"][value="${savedSettings.color}"]`
+      )
       if (colorRadio) {
         colorRadio.checked = true
         textOverlay.style.color = savedSettings.color
@@ -286,13 +393,13 @@ const initCustomText = () => {
   }
 
   // Event listeners
-  textInput.addEventListener('input', (e) => {
+  textInput.addEventListener('input', e => {
     textOverlay.textContent = e.target.value
     textOverlay.style.display = e.target.value ? 'block' : 'none'
     saveAllSettings()
   })
 
-  document.getElementById('textSize').addEventListener('change', (e) => {
+  document.getElementById('textSize').addEventListener('change', e => {
     const size = parseInt(e.target.value)
     if (size >= 10 && size <= 50) {
       textOverlay.style.fontSize = size + 'px'
@@ -302,13 +409,13 @@ const initCustomText = () => {
     }
   })
 
-  document.getElementById('textFont').addEventListener('change', (e) => {
+  document.getElementById('textFont').addEventListener('change', e => {
     textOverlay.style.fontFamily = e.target.value
     saveAllSettings()
   })
 
   document.querySelectorAll('input[name="textColor"]').forEach(radio => {
-    radio.addEventListener('change', (e) => {
+    radio.addEventListener('change', e => {
       if (e.target.checked) {
         textOverlay.style.color = e.target.value
         saveAllSettings()
@@ -318,7 +425,7 @@ const initCustomText = () => {
 
   // Déplacement souris uniquement (desktop)
   let isDragging = false
-  textOverlay.addEventListener('mousedown', (e) => {
+  textOverlay.addEventListener('mousedown', e => {
     isDragging = true
     const startX = e.clientX
     const startY = e.clientY
@@ -327,19 +434,19 @@ const initCustomText = () => {
     const startLeft = rect.left - containerRect.left
     const startTop = rect.top - containerRect.top
 
-    const handleMouseMove = (e) => {
+    const handleMouseMove = e => {
       if (!isDragging) return
       const deltaX = e.clientX - startX
       const deltaY = e.clientY - startY
       let newLeft = startLeft + deltaX
       let newTop = startTop + deltaY
-      
+
       // Contraintes
       const maxLeft = containerRect.width - rect.width
       const maxTop = containerRect.height - rect.height
       newLeft = Math.max(0, Math.min(newLeft, maxLeft))
       newTop = Math.max(0, Math.min(newTop, maxTop))
-      
+
       textOverlay.style.left = newLeft + 'px'
       textOverlay.style.top = newTop + 'px'
       textOverlay.style.transform = 'none'

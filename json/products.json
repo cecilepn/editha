@@ -3,11 +3,12 @@
     {
       "title": "L'Étranger",
       "author": "Albert Camus",
+      "description": "Un roman existentiel et philosophique qui explore l'absurdité de la condition humaine.",
       "formats": {
-        "paperback": {
+        "Poche": {
           "price": 7.9
         },
-        "hardcover": {
+        "Grand format": {
           "price": 15.5
         }
       },
@@ -29,11 +30,12 @@
     {
       "title": "Les Misérables",
       "author": "Victor Hugo",
+      "description": "Une fresque sociale et historique retraçant les destins entrecroisés dans la France du XIXe siècle.",
       "formats": {
-        "paperback": {
+        "Poche": {
           "price": 7.9
         },
-        "hardcover": {
+        "Grand format": {
           "price": 15.5
         }
       },
@@ -55,11 +57,12 @@
     {
       "title": "1984",
       "author": "George Orwell",
+      "description": "Un roman dystopique qui dénonce la surveillance et le totalitarisme à travers le régime de Big Brother.",
       "formats": {
-        "paperback": {
+        "Poche": {
           "price": 8.2
         },
-        "hardcover": {
+        "Grand format": {
           "price": 17.0
         }
       },
@@ -81,11 +84,12 @@
     {
       "title": "Le Petit Prince",
       "author": "Antoine de Saint-Exupéry",
+      "description": "Un conte poétique et philosophique sur l’amitié, l’amour et le sens de la vie.",
       "formats": {
-        "paperback": {
+        "Poche": {
           "price": 6.5
         },
-        "hardcover": {
+        "Grand format": {
           "price": 14.0
         }
       },

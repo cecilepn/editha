@@ -1,6 +1,6 @@
 /* mobile first */
 .productImage {
-  min-height: 600px;
+  height: 600px;
 }
 .productInfos {
   padding-bottom: 30px;
@@ -11,12 +11,16 @@
   gap: 30px;
 }
 .productRecoImg {
-  min-height: 400px;
+  height: 400px;
 }
 
 .icons > img {
   width: 25px;
   height: 25px;
+}
+
+.recommendations {
+  padding-bottom: 40px;
 }
 
 /* desktop */
@@ -30,7 +34,6 @@
 
   .productImage {
     max-width: 50%;
-    height: 100%;
   }
   .recommendations {
     flex-direction: row;

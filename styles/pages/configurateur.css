@@ -5,6 +5,14 @@
 .productInfos {
   padding-bottom: 30px;
 }
+.productReco {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.productRecoImg {
+  min-height: 400px;
+}
 
 .icons > img {
   width: 25px;
@@ -25,7 +33,13 @@
     height: 100%;
   }
   .recommendations {
-    display: flex;
+    flex-direction: row;
     gap: 30px;
+    padding-bottom: 60px;
+  }
+
+  .productRecoImg {
+    width: 400px;
+    height: 300px;
   }
 }

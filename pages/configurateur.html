@@ -73,18 +73,18 @@
           </div>
         </div>
       </section>
-      <section class="px-30">
+      <section class="flex flex-col gap-30 px-30">
         <h2 class="h3">Nos recommendations</h2>
-        <div class="recommendations">
-          <product-card></product-card>
-          <product-card></product-card>
-          <product-card></product-card>
-        </div>
+        <div
+          class="recommendations flex flex-col gap-30"
+          id="recommendations"></div>
       </section>
     </main>
     <app-footer></app-footer>
   </body>
-  <script src="../js/components/productCard.js"></script>
-  <script src="../js/components/addToCartButton.js"></script>
+  <script
+    type="module"
+    src="../js/components/productRecommendation.js"></script>
+  <script type="module" src="../js/components/addToCartButton.js"></script>
   <script type="module" src="../script.js"></script>
 </html>

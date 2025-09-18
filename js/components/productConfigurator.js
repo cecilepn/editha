@@ -1,4 +1,5 @@
 import { fetchProducts } from '../utils/fetchData.js'
+import { updatePrice } from '../utils/calculatePrice.js'
 
 document.addEventListener('DOMContentLoaded', async () => {
   const products = await fetchProducts()
@@ -15,6 +16,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     productImage.alt = mainProduct.title
     productTitle.textContent = mainProduct.title
     productDescription.textContent = mainProduct.description
+
+    // Zone de prix
+    const priceElement = document.createElement('p')
+    priceElement.classList.add('productPrice', 'h4')
+    document.querySelector('.productInfos').appendChild(priceElement)
 
     // Formats options
     const formatsFieldset = document.querySelector(
@@ -52,6 +58,23 @@ document.addEventListener('DOMContentLoaded', async () => {
       colorsFieldset.appendChild(option)
     })
 
+    // Listeners sur les options
+    document.querySelectorAll('input[name="format"]').forEach(input => {
+      input.addEventListener('change', () => updatePrice(mainProduct))
+    })
+
+    document.querySelectorAll('input[name="color"]').forEach(input => {
+      input.addEventListener('change', () => updatePrice(mainProduct))
+    })
+
+    // Listener sur le champ texte personnalisé
+    document.querySelector('#textcustom').addEventListener('input', () => {
+      updatePrice(mainProduct)
+    })
+
+    // Initialisation du prix
+    updatePrice(mainProduct)
+
     // Recommended products
     const recommendationsContainer = document.querySelector('#recommendations')
     recommendationsContainer.innerHTML = ''
@@ -65,7 +88,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         <div class="flex flex-col gap-10">
           <h3>${product.title}</h3>
           <p>Auteur : ${product.author}</p>
-          <p>Prix : ${product.general_price} €</p>
+          <p>${product.general_price} €</p>
         </div>
       `
       recommendationsContainer.appendChild(card)

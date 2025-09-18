@@ -25,11 +25,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     Object.entries(mainProduct.formats).forEach(([format, details], index) => {
       const id = `format-${index}`
       const option = document.createElement('div')
-      option.classList.add('flex', 'items-center', 'gap-5')
+      option.classList.add('flex', 'items-center', 'gap-10')
 
       option.innerHTML = `
         <input type="radio" id="${id}" name="format" value="${format}" />
-        <label for="${id}">${format} (${details.price} €)</label>
+        <label for="${id}">${format}</label>
       `
       formatsFieldset.appendChild(option)
     })
@@ -43,11 +43,11 @@ document.addEventListener('DOMContentLoaded', async () => {
     Object.keys(mainProduct.cover_colors).forEach((color, index) => {
       const id = `color-${index}`
       const option = document.createElement('div')
-      option.classList.add('flex', 'items-center', 'gap-5')
+      option.classList.add('flex', 'items-center', 'gap-10')
 
       option.innerHTML = `
         <input type="radio" id="${id}" name="color" value="${color}" />
-        <label for="${id}">${color}</label>
+        <label for="${id}"><span class="sr-only">${color}</span></label>
       `
       colorsFieldset.appendChild(option)
     })

@@ -13,8 +13,8 @@
         }
       },
       "cover_colors": {
-        "black": 0.5,
-        "white": 0.0,
+        "green": 0.5,
+        "blue": 0.0,
         "red": 1.0
       },
       "images": [
@@ -40,8 +40,8 @@
         }
       },
       "cover_colors": {
-        "black": 0.5,
-        "white": 0.0,
+        "green": 0.5,
+        "yellow": 0.0,
         "red": 1.0
       },
       "images": [
@@ -67,8 +67,8 @@
         }
       },
       "cover_colors": {
-        "gray": 0.2,
-        "midnight blue": 0.8,
+        "purple": 0.2,
+        "blue": 0.8,
         "red": 1.0
       },
       "images": [
@@ -95,8 +95,8 @@
       },
       "cover_colors": {
         "yellow": 0.5,
-        "light blue": 0.7,
-        "white": 0.0
+        "blue": 0.7,
+        "green": 0.0
       },
       "images": [
         {

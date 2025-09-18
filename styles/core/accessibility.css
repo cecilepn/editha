@@ -113,8 +113,8 @@ video:focus-visible {
 input,
 .input {
   min-height: 44px;
-  padding: 0.5rem 0.75rem;
   font-size: 1rem;
+  border: black 1px solid;
 }
 
 /* Helpers pour états ARIA */

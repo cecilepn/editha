@@ -5,6 +5,10 @@
 .productInfos {
   padding-bottom: 30px;
 }
+
+legend {
+  padding-bottom: 10px;
+}
 .productReco {
   display: flex;
   flex-direction: column;
@@ -45,4 +49,54 @@
     width: 400px;
     height: 300px;
   }
+}
+.productOptions input[type='radio'] {
+  display: none;
+}
+
+/* Style des options Format */
+.productOptions fieldset:first-of-type label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 20px;
+  border: 1px solid #000;
+  cursor: pointer;
+  background-color: #fff;
+  transition: all 0.2s ease-in-out;
+}
+
+.productOptions fieldset:first-of-type input[type='radio']:checked + label {
+  background-color: #000;
+  color: #fff;
+}
+
+/* Style des options Couleurs */
+.productOptions fieldset:nth-of-type(2) label {
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  border: 1px solid #000;
+  cursor: pointer;
+}
+
+input[value='red'] + label {
+  background-color: red;
+}
+input[value='blue'] + label {
+  background-color: blue;
+}
+input[value='green'] + label {
+  background-color: green;
+}
+input[value='purple'] + label {
+  background-color: purple;
+}
+input[value='yellow'] + label {
+  background-color: gold;
+}
+
+.productOptions fieldset:nth-of-type(2) input[type='radio']:checked + label {
+  outline: 1px solid black;
+  outline-offset: 2px;
 }

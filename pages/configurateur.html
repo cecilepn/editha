@@ -11,80 +11,41 @@
     <app-header></app-header>
     <main class="configurator m-h-100vh flex flex-col gap-60">
       <section class="containerConfig">
-        <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjaHnLAtAVrWCsJg_qZw1esx9oL7SQKD2AtQ&s"
-          alt=""
-          class="productImage w-full h-full" />
+        <img src="" alt="" class="productImage w-full object-cover" />
         <div class="sideRight">
           <div class="productInfos flex flex-col px-30 py-60 gap-20">
             <div class="flex justify-between">
-              <h1 class="h3">Nom du produit</h1>
+              <h1 class="h3"></h1>
               <div class="icons flex items-center gap-10">
                 <img src="../images/svg/heart.svg" alt="" />
                 <img src="../images/svg/share.svg" alt="" />
               </div>
             </div>
             <div>
-              <p class="body-m">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua.
-              </p>
+              <p class="body-m"></p>
             </div>
           </div>
-          <div class="productOptions flex flex-col gap-30 px-30">
-            <fieldset class="flex gap-10">
-              <legend>Format</legend>
-              <div class="flex items-center gap-5">
-                <input type="radio" id="poche" name="drone" value="poche" />
-                <label for="poche">Poche</label>
-              </div>
-              <div class="flex items-center gap-5">
-                <input
-                  type="radio"
-                  id="bigformat"
-                  name="drone"
-                  value="bigformat" />
-                <label for="bigformat">Grand Format</label>
-              </div>
-            </fieldset>
-            <fieldset class="flex gap-10">
-              <legend>Couleurs</legend>
-              <div class="flex items-center gap-5">
-                <input type="radio" id="red" name="rouge" value="red" />
-                <label for="red">Rouge</label>
-              </div>
-              <div class="flex items-center gap-5">
-                <input type="radio" id="blue" name="bleu" value="blue" />
-                <label for="blue">Bleu</label>
-              </div>
-            </fieldset>
+          <div class="productOptions flex flex-col gap-20 px-30">
+            <fieldset class="flex gap-10"></fieldset>
+            <fieldset class="flex gap-10"></fieldset>
             <div class="flex flex-col gap-10">
               <label for="textcustom">Texte personnalisé :</label>
-              <input
-                type="text"
-                id="textcustom"
-                name="textcustom"
-                required
-                minlength="4"
-                maxlength="8"
-                size="10" />
+              <input type="text" id="textcustom" name="textcustom" />
             </div>
             <add-to-cart></add-to-cart>
           </div>
         </div>
       </section>
-      <section class="px-30">
+      <section class="flex flex-col gap-30 px-30">
         <h2 class="h3">Nos recommendations</h2>
-        <div class="recommendations">
-          <product-card></product-card>
-          <product-card></product-card>
-          <product-card></product-card>
-        </div>
+        <div
+          class="recommendations flex flex-col gap-30"
+          id="recommendations"></div>
       </section>
     </main>
     <app-footer></app-footer>
   </body>
-  <script src="../js/components/productCard.js"></script>
-  <script src="../js/components/addToCartButton.js"></script>
+  <script type="module" src="../js/components/productConfigurator.js"></script>
+  <script type="module" src="../js/components/addToCartButton.js"></script>
   <script type="module" src="../script.js"></script>
 </html>

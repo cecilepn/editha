@@ -1,27 +1,55 @@
 {
   "books": [
     {
-      "title": "The Stranger",
+      "title": "L'Étranger",
       "author": "Albert Camus",
+      "description": "Un roman existentiel et philosophique qui explore l'absurdité de la condition humaine.",
       "formats": {
-        "paperback": {
+        "Poche": {
           "price": 7.9
         },
-        "hardcover": {
+        "Grand format": {
           "price": 15.5
         }
       },
       "cover_colors": {
-        "black": 0.5,
-        "white": 0.0,
+        "green": 0.5,
+        "blue": 0.0,
         "red": 1.0
       },
       "images": [
         {
-          "url": "https://example.com/the-stranger-cover1.jpg"
+          "url": "https://livredulivre.com/wp-content/uploads/2023/05/WhatsApp-Image-2023-05-03-at-09.06.28.jpeg"
         },
         {
-          "url": "https://example.com/the-stranger-cover2.jpg"
+          "url": "https://livredulivre.com/wp-content/uploads/2023/05/WhatsApp-Image-2023-05-03-at-09.06.28.jpeg"
+        }
+      ],
+      "general_price": 15.5
+    },
+    {
+      "title": "Les Misérables",
+      "author": "Victor Hugo",
+      "description": "Une fresque sociale et historique retraçant les destins entrecroisés dans la France du XIXe siècle.",
+      "formats": {
+        "Poche": {
+          "price": 7.9
+        },
+        "Grand format": {
+          "price": 15.5
+        }
+      },
+      "cover_colors": {
+        "green": 0.5,
+        "yellow": 0.0,
+        "red": 1.0
+      },
+      "images": [
+        {
+          "url": "https://images.epagine.fr/263/9782081473263_1_75.jpg"
+        },
+        {
+          "url": "https://images.epagine.fr/263/9782081473263_1_75.jpg"
         }
       ],
       "general_price": 15.5
@@ -29,51 +57,53 @@
     {
       "title": "1984",
       "author": "George Orwell",
+      "description": "Un roman dystopique qui dénonce la surveillance et le totalitarisme à travers le régime de Big Brother.",
       "formats": {
-        "paperback": {
+        "Poche": {
           "price": 8.2
         },
-        "hardcover": {
+        "Grand format": {
           "price": 17.0
         }
       },
       "cover_colors": {
-        "gray": 0.2,
-        "midnight blue": 0.8,
+        "purple": 0.2,
+        "blue": 0.8,
         "red": 1.0
       },
       "images": [
         {
-          "url": "https://example.com/1984-cover1.jpg"
+          "url": "https://m.media-amazon.com/images/I/81MpFurNEFL._SY522_.jpg"
         },
         {
-          "url": "https://example.com/1984-cover2.jpg"
+          "url": "https://m.media-amazon.com/images/I/81MpFurNEFL._SY522_.jpg"
         }
       ],
       "general_price": 17.0
     },
     {
-      "title": "The Little Prince",
+      "title": "Le Petit Prince",
       "author": "Antoine de Saint-Exupéry",
+      "description": "Un conte poétique et philosophique sur l’amitié, l’amour et le sens de la vie.",
       "formats": {
-        "paperback": {
+        "Poche": {
           "price": 6.5
         },
-        "hardcover": {
+        "Grand format": {
           "price": 14.0
         }
       },
       "cover_colors": {
         "yellow": 0.5,
-        "light blue": 0.7,
-        "white": 0.0
+        "blue": 0.7,
+        "green": 0.0
       },
       "images": [
         {
-          "url": "https://example.com/little-prince-cover1.jpg"
+          "url": "https://images.dassault-aviation.com/w_980,f_auto,q_auto,g_center,dpr_auto,c_fill/wp-auto-upload/1/files/2024/01/petitprince.jpg"
         },
         {
-          "url": "https://example.com/little-prince-cover2.jpg"
+          "url": "https://images.dassault-aviation.com/w_980,f_auto,q_auto,g_center,dpr_auto,c_fill/wp-auto-upload/1/files/2024/01/petitprince.jpg"
         }
       ],
       "general_price": 14.0

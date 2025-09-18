@@ -23,8 +23,3 @@
   --radius-md: 0.5rem;
   --radius-lg: 1rem;
 }
-
-input {
-  height: 50px;
-  border: black 1px solid;
-}

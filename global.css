@@ -1,6 +1,5 @@
-
-@import url('styles/core/index.css');
-@import url('styles/components/index.css');
+@import url('./styles/core/index.css');
+@import url('./styles/components/index.css');
 
 /* Variables globales */
 :root {
@@ -23,4 +22,9 @@
   --radius-sm: 0.25rem;
   --radius-md: 0.5rem;
   --radius-lg: 1rem;
+}
+
+input {
+  height: 50px;
+  border: black 1px solid;
 }

@@ -4,28 +4,31 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Editha</title>
-  <link rel="stylesheet" href="global.css" />
-  <link rel="stylesheet" href="styles/core/index.css" />
-  <link rel="stylesheet" href="styles/pages/homepage.css" />
+    <link rel="stylesheet" href="./global.css" />
+    <link rel="stylesheet" href="./styles/pages/homepage.css" />
   </head>
   <body>
     <app-header></app-header>
     <main>
-
       <!-- Presentation -->
-     <div class="w-full flex flex-col">
+      <div class="w-full flex flex-col">
         <div class="img-container w-full">
-          <img src="https://wallpaperaccess.com/full/4990824.png" alt="" class="object-cover w-full" />
+          <img
+            src="https://wallpaperaccess.com/full/4990824.png"
+            alt=""
+            class="object-cover w-full" />
         </div>
-        <div class="text-container p-4">
-          <h2 class="h2">Lorem ipsum dolor sit amet.
-            Et impedit dolor ut esse dolores qui soluta minima ex consequatur modi!
-            Vel dolorem iure ut deserunt dolorem ut sunt fuga in consequatur esse.</h2>
+        <div class="text-container p-30">
+          <h2 class="h2">
+            Lorem ipsum dolor sit amet. Et impedit dolor ut esse dolores qui
+            soluta minima ex consequatur modi! Vel dolorem iure ut deserunt
+            dolorem ut sunt fuga in consequatur esse.
+          </h2>
         </div>
       </div>
-      
+
       <!-- Cards 1 -->
-  <div class="cards-container flex gap-8 mt-8 justify-center">
+  <div class="cards-container flex gap-30 mt-8 justify-center">
         <app-card 
           image-url="https://wallpaperaccess.com/full/4990824.png"
           title1="Lorem ipsum dolor sit amet."
@@ -43,19 +46,25 @@
       </div>
 
       <!-- Configurator Outplay -->
-      <div class="configurator-container flex flex-col items-center p-8">
+      <div class="configurator-container flex flex-col items-center p-8 gap-20">
         <div class="configurator-text-container mb-4">
-          <h2 class="h2">Lorem ipsum dolor sit amet.</h2>
-          <p class="body-m">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, quod.</p>
+          <h2 class="h2">Testez le configurateur.</h2>
+          <p class="body-m">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam,
+            quod.
+          </p>
         </div>
         <div class="button-container">
-          <a href="#" class="button-link bg-primary p-4 font-bold text-base">Commencer</a>
+          <a
+            href="/pages/configurateur.html"
+            class="button-link bg-black text-white px-30 py-20 font-bold text-base">
+            Commencer
+          </a>
         </div>
       </div>
 
-    
       <!-- Cards 2 -->
-      <div class="cards2-container flex flex-col gap-8 mt-8 justify-center">
+      <div class="cards2-container flex flex-col gap-60 px-30 justify-center">
         <!-- Première card au-dessus -->
         <app-card 
           image-url="https://wallpaperaccess.com/full/4990824.png"
@@ -66,7 +75,7 @@
           card-class="card2 mx-auto">
         </app-card>
         <!-- Les deux autres côte à côte -->
-        <div class="flex flex-row gap-8 justify-center">
+        <div class="flex flex-row gap-30 justify-center">
           <app-card 
             image-url="https://wallpaperaccess.com/full/4990824.png"
             title1="Lorem ipsum dolor sit amet."
@@ -85,7 +94,6 @@
           </app-card>
         </div>
       </div>
-
     </main>
     <app-footer></app-footer>
   </body>

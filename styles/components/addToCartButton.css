@@ -1,0 +1,11 @@
+.add-to-cart {
+  border: none;
+  padding: 20px 30px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-to-cart:hover {
+  background-color: #333;
+}

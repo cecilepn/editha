@@ -3,7 +3,7 @@ class Header extends HTMLElement {
     this.innerHTML = `
       <header>
         <div>
-          <a href="index.html" aria-label="Accueil Editha">
+          <a href="/" aria-label="Accueil Editha">
             <img src="http://freelogopng.com/images/all_img/1657952641google-logo-png-image.png" alt="Logo Editha">
           </a>
         </div>
@@ -47,40 +47,40 @@ class Header extends HTMLElement {
           </div>
         </div>
       </header>
-    `;
-    
-    this.setupBurgerMenu();
+    `
+
+    this.setupBurgerMenu()
   }
-  
+
   setupBurgerMenu() {
-    const burger = this.querySelector('.burger');
-    const modal = this.querySelector('.burger-modal');
-    const closeBtn = this.querySelector('.burger-close');
-    const body = document.body;
-    
+    const burger = this.querySelector('.burger')
+    const modal = this.querySelector('.burger-modal')
+    const closeBtn = this.querySelector('.burger-close')
+    const body = document.body
+
     burger.addEventListener('click', () => {
-      modal.classList.add('active');
-      modal.setAttribute('aria-hidden', 'false');
-      body.classList.add('modal-open');
-      burger.style.display = 'none';
-    });
-    
+      modal.classList.add('active')
+      modal.setAttribute('aria-hidden', 'false')
+      body.classList.add('modal-open')
+      burger.style.display = 'none'
+    })
+
     closeBtn.addEventListener('click', () => {
-      modal.classList.remove('active');
-      modal.setAttribute('aria-hidden', 'true');
-      body.classList.remove('modal-open');
-      burger.style.display = 'flex';
-    });
-    
+      modal.classList.remove('active')
+      modal.setAttribute('aria-hidden', 'true')
+      body.classList.remove('modal-open')
+      burger.style.display = 'flex'
+    })
+
     // Fermer la modal en cliquant en dehors
-    modal.addEventListener('click', (e) => {
+    modal.addEventListener('click', e => {
       if (e.target === modal) {
-        modal.classList.remove('active');
-        modal.setAttribute('aria-hidden', 'true');
-        body.classList.remove('modal-open');
-        burger.style.display = 'flex';
+        modal.classList.remove('active')
+        modal.setAttribute('aria-hidden', 'true')
+        body.classList.remove('modal-open')
+        burger.style.display = 'flex'
       }
-    });
+    })
   }
 }
 customElements.define('app-header', Header)

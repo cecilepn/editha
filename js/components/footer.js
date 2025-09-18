@@ -22,15 +22,17 @@ class Footer extends HTMLElement {
           </div>
         </section>
         <section class="legal-section" aria-label="Informations légales">
-          <p>&copy; BOOKS, 2025</p>
-          <nav aria-label="Liens légaux">
-            <ul>
-              <li><a href="/confidentiality">Politique de confidentialité</a></li>
-              <li><a href="/privacy">Conditions générales de vente</a></li>
-              <li><a href="/cookies">Cookie policy</a></li>
-              <li><a href="/legal">Mentions légales</a></li>
-            </ul>
-          </nav>
+          <div class="legal-flex">
+            <span class="h6 legal-copyright">&copy; BOOKS, 2025</span>
+            <nav aria-label="Liens légaux">
+              <ul>
+                <li><a href="/confidentiality">Politique de confidentialité</a></li>
+                <li><a href="/privacy">Conditions générales de vente</a></li>
+                <li><a href="/cookies">Cookie policy</a></li>
+                <li><a href="/legal">Mentions légales</a></li>
+              </ul>
+            </nav>
+          </div>
         </section>
       </footer>
     `;

@@ -26,34 +26,20 @@
       
       <!-- Cards 1 -->
   <div class="cards-container flex gap-8 mt-8 justify-center">
-        <div class="card flex flex-col w-fit p-4">
-          <div class="card-img-container p-8">
-            <img src="https://wallpaperaccess.com/full/4990824.png" alt="" class="object-cover w-auto" />
-          </div>
-          <div class="card-content-row mt-4">
-            <div class="card-text-container flex flex-col">
-              <h5>Lorem ipsum dolor sit amet.</h5>
-              <h5>Lorem ipsum dolor sit amet.</h5>
-            </div>
-            <div class="card-price-container ml-8">
-              <p class="body-m font-bold">45,00€</p>
-            </div>
-          </div>
-        </div>
-        <div class="card flex flex-col w-fit p-4">
-          <div class="card-img-container p-8">
-            <img src="https://wallpaperaccess.com/full/4990824.png" alt="" class="object-cover w-full" />
-          </div>
-          <div class="card-content-row mt-4">
-            <div class="card-text-container flex flex-col">
-              <h5>Lorem ipsum dolor sit amet.</h5>
-              <h5>Lorem ipsum dolor sit amet.</h5>
-            </div>
-            <div class="card-price-container ml-8">
-              <p class="body-m font-bold">45,00€</p>
-            </div>
-          </div>
-        </div>
+        <app-card 
+          image-url="https://wallpaperaccess.com/full/4990824.png"
+          title1="Lorem ipsum dolor sit amet."
+          title2="Lorem ipsum dolor sit amet."
+          price="45,00€"
+          image-class="object-cover w-auto">
+        </app-card>
+        <app-card 
+          image-url="https://wallpaperaccess.com/full/4990824.png"
+          title1="Lorem ipsum dolor sit amet."
+          title2="Lorem ipsum dolor sit amet."
+          price="45,00€"
+          image-class="object-cover w-full">
+        </app-card>
       </div>
 
       <!-- Configurator Outplay -->
@@ -71,50 +57,32 @@
       <!-- Cards 2 -->
       <div class="cards2-container flex flex-col gap-8 mt-8 justify-center">
         <!-- Première card au-dessus -->
-        <div class="card2 card flex flex-col w-fit p-4 mx-auto">
-          <div class="card-img-container p-8">
-            <img src="https://wallpaperaccess.com/full/4990824.png" alt="" class="object-cover w-full" />
-          </div>
-          <div class="card-content-row mt-4">
-            <div class="card-text-container flex flex-col">
-              <h5>Lorem ipsum dolor sit amet.</h5>
-              <h5>Lorem ipsum dolor sit amet.</h5>
-            </div>
-            <div class="card-price-container ml-8">
-              <p class="body-m font-bold">39,00€</p>
-            </div>
-          </div>
-        </div>
+        <app-card 
+          image-url="https://wallpaperaccess.com/full/4990824.png"
+          title1="Lorem ipsum dolor sit amet."
+          title2="Lorem ipsum dolor sit amet."
+          price="39,00€"
+          image-class="object-cover w-full"
+          card-class="card2 mx-auto">
+        </app-card>
         <!-- Les deux autres côte à côte -->
         <div class="flex flex-row gap-8 justify-center">
-          <div class="card2 card flex flex-col w-fit p-4">
-            <div class="card-img-container p-8">
-              <img src="https://wallpaperaccess.com/full/4990824.png" alt="" class="object-cover w-full" />
-            </div>
-            <div class="card-content-row mt-4">
-              <div class="card-text-container flex flex-col">
-                <h5>Lorem ipsum dolor sit amet.</h5>
-                <h5>Lorem ipsum dolor sit amet.</h5>
-              </div>
-              <div class="card-price-container ml-8">
-                <p class="body-m font-bold">39,00€</p>
-              </div>
-            </div>
-          </div>
-          <div class="card2 card flex flex-col w-fit p-4">
-            <div class="card-img-container p-8">
-              <img src="https://wallpaperaccess.com/full/4990824.png" alt="" class="object-cover w-full" />
-            </div>
-            <div class="card-content-row mt-4">
-              <div class="card-text-container flex flex-col">
-                <h5>Lorem ipsum dolor sit amet.</h5>
-                <h5>Lorem ipsum dolor sit amet.</h5>
-              </div>
-              <div class="card-price-container ml-8">
-                <p class="body-m font-bold">39,00€</p>
-              </div>
-            </div>
-          </div>
+          <app-card 
+            image-url="https://wallpaperaccess.com/full/4990824.png"
+            title1="Lorem ipsum dolor sit amet."
+            title2="Lorem ipsum dolor sit amet."
+            price="39,00€"
+            image-class="object-cover w-full"
+            card-class="card2">
+          </app-card>
+          <app-card 
+            image-url="https://wallpaperaccess.com/full/4990824.png"
+            title1="Lorem ipsum dolor sit amet."
+            title2="Lorem ipsum dolor sit amet."
+            price="39,00€"
+            image-class="object-cover w-full"
+            card-class="card2">
+          </app-card>
         </div>
       </div>
 

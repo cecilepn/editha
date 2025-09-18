@@ -1,18 +1,33 @@
-@media (max-width: 700px) {
-	.legal-section {
+@media (max-width: 600px) {
+	.footer-contact-social-container {
 		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		height: auto;
-		min-height: 80px;
-		padding: 1rem;
-		gap: 1rem;
-		text-align: center;
+		align-items: flex-start;
+		gap: 1.5rem;
+	}
+}
+.legal-flex {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	gap: 2rem;
+}
+.legal-copyright {
+	flex-shrink: 0;
+	white-space: nowrap;
+}
+@media (max-width: 900px) {
+	.legal-flex {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 0.5rem;
+	}
+	.legal-copyright {
+		order: 2;
+		margin-top: 0.5rem;
 	}
 	.legal-section nav ul {
-		flex-direction: column;
-		gap: 0.5rem;
-		align-items: center;
+		justify-content: flex-start;
 	}
 }
 .footer-logo-container img {
@@ -22,10 +37,8 @@
 .footer-main-group {
 	height: 444px;
 	min-height: 444px;
-}
-.footer-main-group {
 	display: flex;
-    background-color: #F0F0F0;
+	background-color: #F0F0F0;
 	flex-direction: column;
 	align-items: flex-start;
 	justify-content: space-between;
@@ -34,31 +47,26 @@
 	box-sizing: border-box;
 	padding: 0 2rem;
 }
-
 .footer-logo-container {
 	flex: 1 1 0;
 	display: flex;
 	align-items: center;
 	justify-content: flex-start;
 }
-
 .footer-contact-social-container {
-	flex: 2 1 0;
+	flex: 1 1 0;
 	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: center;
+	align-items: flex-start;
+	justify-content: space-between;
 	width: 100%;
 	gap: 2rem;
 }
-
 .footer-contact-social-container address {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	margin: 0;
 }
-
 .footer-contact-social-container nav[aria-label="Réseaux sociaux"] {
 	flex: 1 1 0;
 	display: flex;
@@ -77,22 +85,17 @@
 	margin: 0;
 }
 .legal-section {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: space-between;
-	height: 54px;
-	min-height: 54px;
 	width: 100%;
 	box-sizing: border-box;
 	padding: 0 2rem;
-}
-.legal-section p {
-	margin: 0;
+	min-height: 54px;
+	transition: height 0.2s;
+	margin-top: 2rem;
 }
 .legal-section nav ul {
 	display: flex;
-	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: center;
 	gap: 1.5rem;
 	margin: 0;
 	padding: 0;
@@ -100,4 +103,12 @@
 }
 .legal-section nav ul li {
 	margin: 0;
+	white-space: nowrap;
+}
+@media (max-width: 900px) {
+	.legal-section {
+		height: auto;
+		min-height: 80px;
+		padding: 1rem;
+	}
 }

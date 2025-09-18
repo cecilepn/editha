@@ -1,3 +1,85 @@
+/* Custom text overlay styles */
+.product-image-container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.custom-text-overlay {
+  position: absolute;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
+  cursor: move;
+  user-select: none;
+  z-index: 10;
+  white-space: nowrap;
+  pointer-events: all;
+  touch-action: none;
+}
+
+/* Text font selector */
+.text-font-selector,
+.text-size-selector {
+  padding: 0.5rem;
+  border: 1px solid #000;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  min-width: 120px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.text-font-selector:focus,
+.text-size-selector:focus {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
+/* Error message styles */
+.error-message {
+  padding: 8px 12px;
+  background-color: #fee;
+  border: 1px solid #fcc;
+  border-radius: 4px;
+  color: #c00;
+  font-size: 0.875rem;
+  margin-top: 8px;
+}
+
+/* Error state for inputs */
+.error {
+  border-color: #c00 !important;
+  background-color: #fef !important;
+}
+
+/* Color option buttons */
+.color-option {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: inline-block;
+  border: 1px solid #ccc;
+}
+
+.color-black {
+  background: #000000;
+}
+
+.color-white {
+  background: #FFFFFF;
+  border: 1px solid #999;
+}
+
+.color-red {
+  background: #FF0000;
+}
+
+/* Hide radio buttons for color selection */
+input[name="textColor"] {
+  display: none;
+}
+
 /* mobile first */
 .productImage {
   height: 600px;
@@ -31,6 +113,9 @@ legend {
 @media (min-width: 1024px) {
   .containerConfig {
     display: flex;
+  }
+  .product-image-container {
+    max-width: 50%;
   }
   .sideRight {
     padding: 0px 60px 60px 60px;

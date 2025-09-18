@@ -1,0 +1,29 @@
+.productImage {
+  max-width: 180px;
+  max-height: 180px;
+}
+
+.deleteBtn {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-align: right;
+}
+
+@media (min-width: 1024px) {
+  .cart {
+    flex-direction: row;
+    gap: 60px;
+  }
+
+  .product {
+    justify-content: inherit;
+  }
+
+  .productInfos {
+    width: 100%;
+  }
+
+  .promo {
+    width: 500px;
+  }
+}

@@ -15,8 +15,20 @@ Andy RABARISON : https://github.com/Rabarison-Andy / DEV
 
 # Update J2 :
 
-- Intégration mobile et desktop de la page configurateur avec les données en dur
-- Intégration mobile et desktop de la homepage avec les données en dur
+- Structure du projet : styles, components, utils ... (Cécile)
+- Intégration mobile et desktop de la page configurateur avec les données en dur (Cécile)
+- Intégration mobile et desktop de la homepage avec les données en dur (Andy)
+
+# Update J4 :
+
+- Intégration mobile et desktop de la page panier (Cécile)
+- Finalisation de la homepage en mobile avec logique de menu et popin (Andy)
+- Intégration des logiques suivantes :
+  - récupération des données du products json et l'injection de ces données dans les pages (Cécile)
+  - calcul dynamique de prix (Cécile)
+  - placement et personnalisation textuelle sur le produit en temps réel (Andy)
+  - ajout et affichage des produits dans la page panier encore en cours de développement (Cécile)
+  - sauvegarde des données temporaires en cours de développement (Andy)
 
 # A propos de la structure
 

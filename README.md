@@ -37,3 +37,8 @@ Nous avons structuré le projet de la façon suivante : - Images qui comprend de
 -> utils : pour les futurs fonctionnalités - json qui contient tableau de données qui correspond à nos produits - dossier pages qui contient toutes les pages annexes de la homepage - dossier styles qui comprends trois dossiers :
 -> components et pages pour les éléments concernés
 -> core pour le global - global.css qui contient les imports généraux du style - index.html qui correspond à la homepage - script.js qui contient les imports de script de certains composants
+
+# Difficultés rencontrés
+
+- Absence du J3 nous pénalise sur le développement des fonctionnalités sur lesquelles on voulait travailler (partage sur les RS - côté Cécile) et impacte sur la qualité de rendu et détails.
+- Frustration lié à l'UI, très simple et manque d'uniformisation.

@@ -37,11 +37,11 @@ class Header extends HTMLElement {
             </button>
             <nav aria-label="Navigation mobile">
               <ul>
-                <li><a href="index.html" class="link">Boutique</a></li>
-                <li><a href="pages/about.html" class="link">À propos</a></li>
-                <li><a href="pages/contact.html" class="link">Connexion</a></li>
-                <li><a href="pages/search.html" class="link">Recherche</a></li>
-                <li><a href="pages/cart.html" class="link">Panier</a></li>
+                <li><a href="/pages/configurateur.html" class="link">Boutique</a></li>
+                <li><a href="/pages/a-propos.html" class="link">À propos</a></li>
+                <li><a href="/pages/contact.html" class="link">Connexion</a></li>
+                <li><a href="/pages/search.html" class="link">Recherche</a></li>
+                <li><a href="/pages/panier.html" class="link">Panier</a></li>
               </ul>
             </nav>
           </div>

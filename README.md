@@ -53,8 +53,8 @@ Ce projet a été réalisé dans le cadre d’un projet étudiant en **M1 Dével
 
 - Refactorisation du fichier `productConfigurator` (Cécile).
 - Mise à jour du calcul des prix en fonction des données temporaires (Andy).
-- Ajustements structure & styles de la homepage (Cécile).
-- Finalisation de l’ajout au panier.
+- Ajustements structure & styles de la homepage et du site global (Cécile).
+- Finalisation de l’ajout au panier (Cécile).
 
 ---
 

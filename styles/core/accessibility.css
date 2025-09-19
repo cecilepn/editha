@@ -112,8 +112,7 @@ video:focus-visible {
 /* Inputs accessibles */
 input,
 .input {
-  min-height: 44px;
-  font-size: 1rem;
+  padding: 10px;
   border: black 1px solid;
 }
 

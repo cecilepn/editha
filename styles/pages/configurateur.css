@@ -8,7 +8,7 @@
 .custom-text-overlay {
   position: absolute;
   font-weight: bold;
-  text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
   cursor: move;
   user-select: none;
   z-index: 10;
@@ -67,21 +67,21 @@
 }
 
 .color-white {
-  background: #FFFFFF;
+  background: #ffffff;
   border: 1px solid #999;
 }
 
 .color-red {
-  background: #FF0000;
+  background: #ff0000;
 }
 
 /* Hide radio buttons for color selection */
-input[name="textColor"] {
+input[name='textColor'] {
   display: none;
 }
 
 /* Selected state for text color options (same visual as product color) */
-input[name="textColor"]:checked + label {
+input[name='textColor']:checked + label {
   outline: 1px solid #000;
   outline-offset: 2px;
 }
@@ -127,9 +127,6 @@ legend {
     padding: 0px 60px 60px 60px;
   }
 
-  .productImage {
-    max-width: 50%;
-  }
   .recommendations {
     flex-direction: row;
     gap: 30px;

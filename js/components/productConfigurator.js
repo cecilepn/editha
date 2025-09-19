@@ -1,64 +1,9 @@
 import { fetchProducts } from '../utils/fetchData.js'
 import { updatePrice } from '../utils/calculatePrice.js'
+import { showErrorMessage } from '../utils/showError.js'
+import { storage } from '../utils/handleLocalStorage.js'
 
-// Constantes
-const STORAGE_KEY = 'editha_configurator_settings'
-const STORAGE_EXPIRY_HOURS = 24
-
-/**
- * Gestion localStorage avec gestion d'erreurs
- */
-const storage = {
-  save: settings => {
-    try {
-      const dataToSave = {
-        ...settings,
-        timestamp: Date.now(),
-        expiryTime: Date.now() + STORAGE_EXPIRY_HOURS * 60 * 60 * 1000
-      }
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(dataToSave))
-      console.log('Settings saved successfully:', settings)
-    } catch (error) {
-      console.error('Erreur lors de la sauvegarde:', error)
-      showErrorMessage('Impossible de sauvegarder vos paramètres')
-    }
-  },
-
-  load: () => {
-    try {
-      const savedData = localStorage.getItem(STORAGE_KEY)
-      if (!savedData) return null
-
-      const parsedData = JSON.parse(savedData)
-
-      if (Date.now() > parsedData.expiryTime) {
-        localStorage.removeItem(STORAGE_KEY)
-        console.log('Settings expired, removed from storage')
-        return null
-      }
-
-      console.log('Settings loaded successfully:', parsedData)
-      return parsedData
-    } catch (error) {
-      console.error('Erreur lors du chargement:', error)
-      localStorage.removeItem(STORAGE_KEY)
-      return null
-    }
-  }
-}
-
-/**
- * Affiche un message d'erreur à l'utilisateur
- */
-const showErrorMessage = message => {
-  const errorElement = document.getElementById('errorMessage')
-  if (errorElement) {
-    errorElement.textContent = message
-    errorElement.style.display = 'block'
-    setTimeout(() => (errorElement.style.display = 'none'), 5000)
-  }
-}
-
+// Affichage des données
 document.addEventListener('DOMContentLoaded', async () => {
   const products = await fetchProducts()
   if (!products.length) return
@@ -79,7 +24,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   if (products.length > 0) {
     const mainProduct = products[0]
 
-    // Main informations
+    // Principales informations
     const productImage = document.querySelector('.productImage')
     const productTitle = document.querySelector('.productInfos h1')
     const productDescription = document.querySelector('.productInfos p')
@@ -147,7 +92,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Initialisation du prix
     updatePrice(mainProduct)
 
-    // Recommended products
+    // Affichage des produits recommandées
     const recommendationsContainer = document.querySelector('#recommendations')
     recommendationsContainer.innerHTML = ''
 
@@ -168,9 +113,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 })
 
-/**
- * Initialise les informations du produit principal
- */
+// Initialise les informations du produit principal
 const initProductInfo = product => {
   const productImage = document.querySelector('.productImage')
   const productTitle = document.querySelector('.productInfos h1')
@@ -182,9 +125,7 @@ const initProductInfo = product => {
   productDescription.textContent = product.description
 }
 
-/**
- * Initialise et gère les options du produit (formats et couleurs)
- */
+// Initialise et gère les options du produit (formats et couleurs)
 const initProductOptions = product => {
   // Formats
   const formatsFieldset = document.querySelector(
@@ -245,10 +186,8 @@ const initProductOptions = product => {
       })
   }, 100)
 }
-const recommendationsContainer = document.querySelector('#recommendations')
-/**
- * Initialise les recommandations de produits
- */
+
+// Initialise les recommandations de produits
 const initRecommendations = products => {
   const recommendationsContainer = document.querySelector('#recommendations')
   recommendationsContainer.innerHTML = ''
@@ -268,42 +207,7 @@ const initRecommendations = products => {
   })
 }
 
-/**
- * Sauvegarde tous les paramètres actuels
- */
-const saveAllSettings = () => {
-  try {
-    const textInput = document.getElementById('textcustom')
-    const textSizeSelect = document.getElementById('textSize')
-    const textFontSelect = document.getElementById('textFont')
-    const customTextElement = document.getElementById('customTextOverlay')
-
-    const settings = {
-      text: textInput?.value || '',
-      fontSize: parseInt(textSizeSelect?.value) || 18,
-      fontFamily: textFontSelect?.value || 'Arial, sans-serif',
-      color:
-        document.querySelector('input[name="textColor"]:checked')?.value ||
-        '#000000',
-      position: {
-        left: parseInt(customTextElement?.style.left) || 0,
-        top: parseInt(customTextElement?.style.top) || 0
-      },
-      selectedFormat: document.querySelector('input[name="format"]:checked')
-        ?.value,
-      selectedColor: document.querySelector('input[name="color"]:checked')
-        ?.value
-    }
-    storage.save(settings)
-  } catch (error) {
-    console.error('Erreur lors de la sauvegarde:', error)
-    showErrorMessage('Impossible de sauvegarder vos modifications')
-  }
-}
-
-/**
- * Initialise le système de texte personnalisé
- */
+// Initialise le système de texte personnalisé
 const initCustomText = () => {
   const textInput = document.getElementById('textcustom')
   if (!textInput) return
@@ -463,4 +367,35 @@ const initCustomText = () => {
     document.addEventListener('mouseup', handleMouseUp)
     e.preventDefault()
   })
+}
+
+// Sauvegarde tous les paramètres actuels
+const saveAllSettings = () => {
+  try {
+    const textInput = document.getElementById('textcustom')
+    const textSizeSelect = document.getElementById('textSize')
+    const textFontSelect = document.getElementById('textFont')
+    const customTextElement = document.getElementById('customTextOverlay')
+
+    const settings = {
+      text: textInput?.value || '',
+      fontSize: parseInt(textSizeSelect?.value) || 18,
+      fontFamily: textFontSelect?.value || 'Arial, sans-serif',
+      color:
+        document.querySelector('input[name="textColor"]:checked')?.value ||
+        '#000000',
+      position: {
+        left: parseInt(customTextElement?.style.left) || 0,
+        top: parseInt(customTextElement?.style.top) || 0
+      },
+      selectedFormat: document.querySelector('input[name="format"]:checked')
+        ?.value,
+      selectedColor: document.querySelector('input[name="color"]:checked')
+        ?.value
+    }
+    storage.save(settings)
+  } catch (error) {
+    console.error('Erreur lors de la sauvegarde:', error)
+    showErrorMessage('Impossible de sauvegarder vos modifications')
+  }
 }

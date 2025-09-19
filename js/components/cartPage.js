@@ -2,8 +2,10 @@
 import { getCart } from '../utils/cart.js'
 
 function renderCart() {
-  const container = document.querySelector('.cart .flex.flex-col.gap-30') // conteneur des produits
+  const container = document.querySelector('.cart-items')
   const promoSection = document.querySelector('.promo')
+
+  container.innerHTML = ''
 
   const cart = getCart()
 

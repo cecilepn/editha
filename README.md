@@ -30,10 +30,17 @@ Andy RABARISON : https://github.com/Rabarison-Andy / DEV
   - ajout et affichage des produits dans la page panier encore en cours de développement (Cécile)
   - sauvegarde des données temporaires en cours de développement (Andy)
 
+# Update J5 :
+
+- Refactorisation du fichier productConfigurator (Cécile)
+- Mise à jour du calcul du prix en fonction des données temporaires (Andy)
+- Ajustement de la structure et du style de la homepage (Cécile)
+- Finalisation ajout dans le panier
+
 # A propos de la structure
 
 Nous avons structuré le projet de la façon suivante : - Images qui comprend des sous-dossiers (svg, png) - js qui comprend deux dossiers "components" et "utils" :
--> components : pour les éléments répétables comme header, footer, addtocartbutton ou productCard
+-> components : pour les éléments répétables (ex: header, footer, addtocartbutton ou productCard)
 -> utils : pour les futurs fonctionnalités - json qui contient tableau de données qui correspond à nos produits - dossier pages qui contient toutes les pages annexes de la homepage - dossier styles qui comprends trois dossiers :
 -> components et pages pour les éléments concernés
 -> core pour le global - global.css qui contient les imports généraux du style - index.html qui correspond à la homepage - script.js qui contient les imports de script de certains composants

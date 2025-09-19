@@ -12,7 +12,7 @@
 @media (min-width: 1024px) {
   .cart {
     flex-direction: row;
-    gap: 60px;
+    justify-content: space-around;
   }
 
   .product {

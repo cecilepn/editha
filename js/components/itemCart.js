@@ -47,12 +47,12 @@ class ItemCart extends HTMLElement {
 
   render(item) {
     this.innerHTML = `
-      <div class="product flex justify-between gap-20">
+      <div class="product w-full flex justify-between gap-20">
         <img
           class="productImage"
           src="${item.image}"
           alt="${item.title}" />
-        <div class="productInfos flex flex-col justify-between w-full">
+        <div class="productInfos w-full flex flex-col justify-between w-full">
           <div class="flex flex-col gap-10">
             <p><strong>${item.title}</strong></p>
             ${item.format ? `<p>Format : ${item.format}</p>` : ''}

@@ -30,7 +30,7 @@ function updateTotals() {
     (acc, item) => acc + item.price * (item.quantity || 1),
     0
   )
-  const shipping = subtotal > 50 ? 0 : 5
+  const shipping = subtotal > 50 ? 0 : 15
   const total = subtotal + shipping
 
   document.querySelector('.promo').innerHTML = `

@@ -16,8 +16,8 @@ class Card extends HTMLElement {
         </div>
         <div class="card-content-row mt-4">
           <div class="card-text-container flex flex-col">
-            <h5>${title1}</h5>
-            <h5>${title2}</h5>
+            <h5>${desc1}</h5>
+            <h5>${desc2}</h5>
           </div>
           <div class="card-price-container ml-8">
             <p class="body-m font-bold">${price}</p>

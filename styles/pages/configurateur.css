@@ -80,6 +80,12 @@ input[name="textColor"] {
   display: none;
 }
 
+/* Selected state for text color options (same visual as product color) */
+input[name="textColor"]:checked + label {
+  outline: 1px solid #000;
+  outline-offset: 2px;
+}
+
 /* mobile first */
 .productImage {
   height: 600px;

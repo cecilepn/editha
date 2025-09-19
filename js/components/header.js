@@ -11,7 +11,7 @@ class Header extends HTMLElement {
           <ul>
             <li><a href="/">Boutique</a></li>
             <li><a href="/pages/about.html">À propos</a></li>
-            <li><a href="/pages/contact.html">Connexion</a></li>
+            <li><a href="/pages/connnexion.html">Connexion</a></li>
             <li>
               <form action="/pages/search.html" method="get" role="search" aria-label="Recherche">
                 <label for="header-search" class="visually-hidden"></label>
@@ -22,7 +22,7 @@ class Header extends HTMLElement {
             </li>
             <li><a href="/pages/panier.html">Panier</a></li>
           </ul>
-          <button class="burger" aria-label="Menu" type="button">
+          <button class="burger" aria-label="Menu" type="button" aria-expanded="false" aria-controls="burger-modal">
             <span></span>
             <span></span>
             <span></span>
@@ -30,8 +30,8 @@ class Header extends HTMLElement {
         </nav>
         
         <!-- Modal du menu burger -->
-        <div class="burger-modal" aria-hidden="true">
-          <div class="burger-modal-content">
+        <div id="burger-modal" class="burger-modal" aria-hidden="true" role="dialog" aria-modal="true" inert>
+          <div class="burger-modal-content" tabindex="-1">
             <button class="burger-close" aria-label="Fermer le menu">
               <span>×</span>
             </button>
@@ -57,29 +57,74 @@ class Header extends HTMLElement {
     const modal = this.querySelector('.burger-modal')
     const closeBtn = this.querySelector('.burger-close')
     const body = document.body
+    const main = document.querySelector('main')
+    const footer = document.querySelector('app-footer, footer')
 
-    burger.addEventListener('click', () => {
+    let lastFocused = null
+
+    const toggleBackgroundInert = (active) => {
+      if (active) {
+        main && main.setAttribute('inert', '')
+        footer && footer.setAttribute('inert', '')
+      } else {
+        main && main.removeAttribute('inert')
+        footer && footer.removeAttribute('inert')
+      }
+    }
+
+    const trapFocus = (event) => {
+      if (!modal.classList.contains('active')) return
+      const focusable = modal.querySelectorAll('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])')
+      if (!focusable.length) return
+      const first = focusable[0]
+      const last = focusable[focusable.length - 1]
+      if (event.key === 'Tab') {
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault()
+          last.focus()
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault()
+          first.focus()
+        }
+      } else if (event.key === 'Escape') {
+        closeModal()
+      }
+    }
+
+    const openModal = () => {
+      lastFocused = document.activeElement
       modal.classList.add('active')
       modal.setAttribute('aria-hidden', 'false')
+      modal.removeAttribute('inert')
       body.classList.add('modal-open')
+      burger.setAttribute('aria-expanded', 'true')
       burger.style.display = 'none'
-    })
+      toggleBackgroundInert(true)
+      // Focus le bouton fermer
+      setTimeout(() => closeBtn.focus(), 0)
+      document.addEventListener('keydown', trapFocus)
+    }
 
-    closeBtn.addEventListener('click', () => {
+    const closeModal = () => {
+      // Rendre le focus au déclencheur AVANT d'hider la modal
+      burger.style.display = 'flex'
+      burger.setAttribute('aria-expanded', 'false')
+      ;(lastFocused || burger).focus()
       modal.classList.remove('active')
       modal.setAttribute('aria-hidden', 'true')
+      modal.setAttribute('inert', '')
       body.classList.remove('modal-open')
-      burger.style.display = 'flex'
-    })
+      toggleBackgroundInert(false)
+      document.removeEventListener('keydown', trapFocus)
+    }
+
+    burger.addEventListener('click', openModal)
+
+    closeBtn.addEventListener('click', closeModal)
 
     // Fermer la modal en cliquant en dehors
     modal.addEventListener('click', e => {
-      if (e.target === modal) {
-        modal.classList.remove('active')
-        modal.setAttribute('aria-hidden', 'true')
-        body.classList.remove('modal-open')
-        burger.style.display = 'flex'
-      }
+      if (e.target === modal) closeModal()
     })
   }
 }

@@ -26,6 +26,15 @@ export function calculatePrice(product) {
 
 // Updating price
 export function updatePrice(product) {
-  document.querySelector('.productPrice').textContent =
-    calculatePrice(product) + ' €'
+  // Ensure price element exists
+  let priceEl = document.querySelector('.productPrice')
+  if (!priceEl) {
+    const infos = document.querySelector('.productInfos')
+    if (infos) {
+      priceEl = document.createElement('p')
+      priceEl.classList.add('productPrice', 'h4')
+      infos.appendChild(priceEl)
+    }
+  }
+  if (priceEl) priceEl.textContent = calculatePrice(product) + ' €'
 }

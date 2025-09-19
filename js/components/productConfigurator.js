@@ -3,12 +3,16 @@ import { updatePrice } from '../utils/calculatePrice.js'
 import { showErrorMessage } from '../utils/showError.js'
 import { storage } from '../utils/handleLocalStorage.js'
 
+// Produit courant pour recalculer le prix depuis n'importe où
+let currentProduct = null
+
 // Affichage des données
 document.addEventListener('DOMContentLoaded', async () => {
   const products = await fetchProducts()
   if (!products.length) return
 
   const mainProduct = products[0]
+  currentProduct = mainProduct
 
   // Initialiser les informations du produit
   initProductInfo(mainProduct)
@@ -184,6 +188,9 @@ const initProductOptions = product => {
       .forEach(radio => {
         radio.addEventListener('change', saveAllSettings)
       })
+
+  // Recalcul du prix après restauration
+  if (currentProduct) updatePrice(currentProduct)
   }, 100)
 }
 
@@ -294,6 +301,9 @@ const initCustomText = () => {
       textOverlay.style.top = savedSettings.position.top + 'px'
       textOverlay.style.transform = 'none'
     }
+
+  // Mettre à jour le prix après restauration du texte
+  if (currentProduct) updatePrice(currentProduct)
   }
 
   // Event listeners
@@ -301,6 +311,7 @@ const initCustomText = () => {
     textOverlay.textContent = e.target.value
     textOverlay.style.display = e.target.value ? 'block' : 'none'
     saveAllSettings()
+  if (currentProduct) updatePrice(currentProduct)
   })
 
   document.getElementById('textSize').addEventListener('change', e => {
@@ -308,6 +319,7 @@ const initCustomText = () => {
     if (size >= 10 && size <= 50) {
       textOverlay.style.fontSize = size + 'px'
       saveAllSettings()
+  if (currentProduct) updatePrice(currentProduct)
     } else {
       showErrorMessage('Taille de texte invalide')
     }
@@ -316,6 +328,7 @@ const initCustomText = () => {
   document.getElementById('textFont').addEventListener('change', e => {
     textOverlay.style.fontFamily = e.target.value
     saveAllSettings()
+  if (currentProduct) updatePrice(currentProduct)
   })
 
   document.querySelectorAll('input[name="textColor"]').forEach(radio => {
@@ -323,6 +336,7 @@ const initCustomText = () => {
       if (e.target.checked) {
         textOverlay.style.color = e.target.value
         saveAllSettings()
+  if (currentProduct) updatePrice(currentProduct)
       }
     })
   })
@@ -394,6 +408,7 @@ const saveAllSettings = () => {
         ?.value
     }
     storage.save(settings)
+  if (currentProduct) updatePrice(currentProduct)
   } catch (error) {
     console.error('Erreur lors de la sauvegarde:', error)
     showErrorMessage('Impossible de sauvegarder vos modifications')

@@ -16,42 +16,6 @@
   background-color: var(--color-white);
 }
 
-/* text */
-
-.text-black {
-  color: var(--color-black);
-}
-.text-white {
-  color: var(--color-white);
-}
-.font-sans {
-  font-family: var(--font-sans);
-}
-.font-serif {
-  font-family: var(--font-serif);
-}
-.font-bold {
-  font-weight: bold;
-}
-.font-italic {
-  font-style: italic;
-}
-.text-center {
-  text-align: center;
-}
-.text-sm {
-  font-size: 0.875rem;
-}
-.text-base {
-  font-size: 1rem;
-}
-.text-lg {
-  font-size: 1.125rem;
-}
-.text-xl {
-  font-size: 1.25rem;
-}
-
 /* Padding global */
 .p-0 {
   padding: 0;

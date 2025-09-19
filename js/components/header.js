@@ -4,13 +4,13 @@ class Header extends HTMLElement {
       <header>
         <div>
           <a href="/" aria-label="Accueil Editha">
-            <img src="http://freelogopng.com/images/all_img/1657952641google-logo-png-image.png" alt="Logo Editha">
+            <img src="/images/svg/logo.svg" alt="Logo Editha">
           </a>
         </div>
         <nav aria-label="Navigation principale">
           <ul>
             <li><a href="/">Boutique</a></li>
-            <li><a href="/pages/about.html">À propos</a></li>
+            <li><a href="/pages/a-propos.html">À propos</a></li>
             <li><a href="/pages/connnexion.html">Connexion</a></li>
             <li>
               <form action="/pages/search.html" method="get" role="search" aria-label="Recherche">
@@ -62,7 +62,7 @@ class Header extends HTMLElement {
 
     let lastFocused = null
 
-    const toggleBackgroundInert = (active) => {
+    const toggleBackgroundInert = active => {
       if (active) {
         main && main.setAttribute('inert', '')
         footer && footer.setAttribute('inert', '')
@@ -72,9 +72,11 @@ class Header extends HTMLElement {
       }
     }
 
-    const trapFocus = (event) => {
+    const trapFocus = event => {
       if (!modal.classList.contains('active')) return
-      const focusable = modal.querySelectorAll('a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])')
+      const focusable = modal.querySelectorAll(
+        'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      )
       if (!focusable.length) return
       const first = focusable[0]
       const last = focusable[focusable.length - 1]

@@ -1,4 +1,4 @@
-// js/pages/cartPage.js
+// js/pages/cart.js
 import { getCart } from '../utils/cart.js'
 
 function renderCart() {

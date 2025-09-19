@@ -5,12 +5,12 @@ class Footer extends HTMLElement {
         <section class="footer-main-group">
           <div class="footer-logo-container">
             <a href="/" aria-label="Accueil Editha">
-              <img src="http://freelogopng.com/images/all_img/1657952641google-logo-png-image.png" alt="Logo Editha">
+              <img src="/images/svg/logo.svg" alt="Logo Editha" class="w-full h-full">
             </a>
           </div>
           <div class="footer-contact-social-container">
             <address>
-              <a href="mailto:lorem@ipsum.com" class="h4">lorem@ipsum.com</a>
+              <a href="mailto:editha@contact.com" class="h4">editha@contact.com</a>
             </address>
             <nav aria-label="Réseaux sociaux">
               <ul>
@@ -35,7 +35,7 @@ class Footer extends HTMLElement {
           </div>
         </section>
       </footer>
-    `;
+    `
   }
 }
 customElements.define('app-footer', Footer)

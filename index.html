@@ -28,21 +28,9 @@
         </div>
       </section>
 
-      <!-- Conteneur 1 -->
-      <section class="container flex flex-col justify-center gap-30 p-30">
-        <app-card
-          image-url="https://wallpaperaccess.com/full/4990824.png"
-          title1="Lorem ipsum dolor sit amet."
-          title2="Lorem ipsum dolor sit amet."
-          price="45,00€">
-        </app-card>
-        <app-card
-          image-url="https://wallpaperaccess.com/full/4990824.png"
-          title1="Lorem ipsum dolor sit amet."
-          title2="Lorem ipsum dolor sit amet."
-          price="45,00€">
-        </app-card>
-      </section>
+      <section
+        class="container flex flex-col justify-center gap-30 p-30"
+        id="container-1"></section>
 
       <!-- Conteneur redirection configurateur -->
       <section
@@ -63,36 +51,15 @@
           </a>
         </div>
       </section>
-
-      <!-- Conteneur 2 -->
-      <section class="last-container flex flex-col gap-60 justify-center py-30">
-        <!-- Première card au-dessus -->
-        <div class="px-30">
-          <app-card
-            image-url="https://wallpaperaccess.com/full/4990824.png"
-            title1="Lorem ipsum dolor sit amet."
-            title2="Lorem ipsum dolor sit amet."
-            price="39,00€"
-            full-width>
-          </app-card>
-        </div>
-        <div class="container flex flex-col gap-30 justify-center px-30">
-          <app-card
-            image-url="https://wallpaperaccess.com/full/4990824.png"
-            title1="Lorem ipsum dolor sit amet."
-            title2="Lorem ipsum dolor sit amet."
-            price="39,00€">
-          </app-card>
-          <app-card
-            image-url="https://wallpaperaccess.com/full/4990824.png"
-            title1="Lorem ipsum dolor sit amet."
-            title2="Lorem ipsum dolor sit amet."
-            price="39,00€">
-          </app-card>
-        </div>
+      <section class="flex flex-col gap-30">
+        <div class="px-30" id="container-fullwidth"></div>
+        <div
+          class="container last-container flex flex-col gap-30 justify-center px-30"
+          id="container-2"></div>
       </section>
     </main>
     <app-footer></app-footer>
   </body>
   <script type="module" src="script.js"></script>
+  <script type="module" src="/js/pages/homepage.js"></script>
 </html>

@@ -9,7 +9,7 @@ class Header extends HTMLElement {
         </div>
         <nav aria-label="Navigation principale">
           <ul>
-            <li><a href="/">Boutique</a></li>
+            <li><a href="/pages/configurateur.html">Configurateur</a></li>
             <li><a href="/pages/a-propos.html">À propos</a></li>
             <li><a href="/pages/connnexion.html">Connexion</a></li>
             <li>

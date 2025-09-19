@@ -189,8 +189,8 @@ const initProductOptions = product => {
         radio.addEventListener('change', saveAllSettings)
       })
 
-  // Recalcul du prix après restauration
-  if (currentProduct) updatePrice(currentProduct)
+    // Recalcul du prix après restauration
+    if (currentProduct) updatePrice(currentProduct)
   }, 100)
 }
 
@@ -221,9 +221,10 @@ const initCustomText = () => {
 
   // Ajouter les contrôles
   const controls = document.createElement('div')
-  controls.className = 'flex flex-col gap-10'
+  controls.className = 'flex flex-col gap-20'
   controls.innerHTML = `
-    <div class="flex gap-10 items-center">
+    <div class="optionsCustomInput flex flex-col gap-20">
+     <div class="flex gap-10 items-center">
       <label for="textSize">Taille:</label>
       <select id="textSize" class="text-size-selector">
         <option value="14">Petite</option>
@@ -231,27 +232,28 @@ const initCustomText = () => {
         <option value="24">Grande</option>
         <option value="32">Très grande</option>
       </select>
-    </div>
-    <div class="flex gap-10 items-center">
-      <label for="textFont">Police:</label>
-      <select id="textFont" class="text-font-selector">
-        <option value="Arial, sans-serif">Arial</option>
-        <option value="Georgia, serif">Georgia</option>
-        <option value="'Times New Roman', serif">Times New Roman</option>
-        <option value="'Courier New', monospace">Courier New</option>
-        <option value="Impact, sans-serif">Impact</option>
-      </select>
-    </div>
-    <div class="flex gap-10 items-center">
-      <label for="textColor">Couleur:</label>
-      <div class="flex gap-10">
-        <input type="radio" id="colorBlack" name="textColor" value="#000000" checked />
-        <label for="colorBlack" class="color-option color-black"></label>
-        <input type="radio" id="colorWhite" name="textColor" value="#FFFFFF" />
-        <label for="colorWhite" class="color-option color-white"></label>
-        <input type="radio" id="colorRed" name="textColor" value="#FF0000" />
-        <label for="colorRed" class="color-option color-red"></label>
       </div>
+      <div class="flex gap-10 items-center">
+        <label for="textFont">Police:</label>
+        <select id="textFont" class="text-font-selector">
+          <option value="Arial, sans-serif">Arial</option>
+          <option value="Georgia, serif">Georgia</option>
+          <option value="'Times New Roman', serif">Times New Roman</option>
+          <option value="'Courier New', monospace">Courier New</option>
+          <option value="Impact, sans-serif">Impact</option>
+        </select>
+      </div>
+      <div class="flex gap-10 items-center">
+        <label for="textColor">Couleur:</label>
+        <div class="flex gap-10">
+          <input type="radio" id="colorBlack" name="textColor" value="#000000" checked />
+          <label for="colorBlack" class="color-option color-black"></label>
+          <input type="radio" id="colorWhite" name="textColor" value="#FFFFFF" />
+          <label for="colorWhite" class="color-option color-white"></label>
+          <input type="radio" id="colorRed" name="textColor" value="#FF0000" />
+          <label for="colorRed" class="color-option color-red"></label>
+      </div>
+    </div>
     </div>
     <div id="errorMessage" class="error-message" style="display: none; color: red; font-size: 12px;"></div>
   `
@@ -302,8 +304,8 @@ const initCustomText = () => {
       textOverlay.style.transform = 'none'
     }
 
-  // Mettre à jour le prix après restauration du texte
-  if (currentProduct) updatePrice(currentProduct)
+    // Mettre à jour le prix après restauration du texte
+    if (currentProduct) updatePrice(currentProduct)
   }
 
   // Event listeners
@@ -311,7 +313,7 @@ const initCustomText = () => {
     textOverlay.textContent = e.target.value
     textOverlay.style.display = e.target.value ? 'block' : 'none'
     saveAllSettings()
-  if (currentProduct) updatePrice(currentProduct)
+    if (currentProduct) updatePrice(currentProduct)
   })
 
   document.getElementById('textSize').addEventListener('change', e => {
@@ -319,7 +321,7 @@ const initCustomText = () => {
     if (size >= 10 && size <= 50) {
       textOverlay.style.fontSize = size + 'px'
       saveAllSettings()
-  if (currentProduct) updatePrice(currentProduct)
+      if (currentProduct) updatePrice(currentProduct)
     } else {
       showErrorMessage('Taille de texte invalide')
     }
@@ -328,7 +330,7 @@ const initCustomText = () => {
   document.getElementById('textFont').addEventListener('change', e => {
     textOverlay.style.fontFamily = e.target.value
     saveAllSettings()
-  if (currentProduct) updatePrice(currentProduct)
+    if (currentProduct) updatePrice(currentProduct)
   })
 
   document.querySelectorAll('input[name="textColor"]').forEach(radio => {
@@ -336,7 +338,7 @@ const initCustomText = () => {
       if (e.target.checked) {
         textOverlay.style.color = e.target.value
         saveAllSettings()
-  if (currentProduct) updatePrice(currentProduct)
+        if (currentProduct) updatePrice(currentProduct)
       }
     })
   })
@@ -408,7 +410,7 @@ const saveAllSettings = () => {
         ?.value
     }
     storage.save(settings)
-  if (currentProduct) updatePrice(currentProduct)
+    if (currentProduct) updatePrice(currentProduct)
   } catch (error) {
     console.error('Erreur lors de la sauvegarde:', error)
     showErrorMessage('Impossible de sauvegarder vos modifications')

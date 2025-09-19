@@ -1,6 +1,5 @@
 class Card extends HTMLElement {
   connectedCallback() {
-    // Récupérer les attributs
     const imageUrl =
       this.getAttribute('image-url') ||
       'https://wallpaperaccess.com/full/4990824.png'
@@ -12,9 +11,7 @@ class Card extends HTMLElement {
     this.innerHTML = `
       <div class="card flex flex-col gap-20">
         <div class="card-container-img ${fullWidth ? 'full-width' : ''}">
-          <img src="${imageUrl}" alt="" class="h-full ${
-      fullWidth ? 'w-full' : ''
-    }" />
+          <img src="${imageUrl}" alt="" class="h-full w-full" />
         </div>
         <div class="product-infos flex flex-col gap-20">
           <div class="flex flex-col gap-10 h4">

@@ -12,6 +12,10 @@
     max-width: 100vw;
   }
 
+  .full-width img {
+    object-fit: cover;
+  }
+
   .product-infos {
     flex-direction: row;
     justify-content: space-between;
@@ -19,8 +23,11 @@
 }
 
 @media (min-width: 1024px) {
+  .card {
+    min-width: 500px;
+  }
   .card-container-img {
     min-height: 500px;
-    max-width: inherit;
+    max-width: 100%;
   }
 }

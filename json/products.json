@@ -19,10 +19,10 @@
       },
       "images": [
         {
-          "url": "https://livredulivre.com/wp-content/uploads/2023/05/WhatsApp-Image-2023-05-03-at-09.06.28.jpeg"
+          "url": "/images/products/product1.png"
         },
         {
-          "url": "https://livredulivre.com/wp-content/uploads/2023/05/WhatsApp-Image-2023-05-03-at-09.06.28.jpeg"
+          "url": "/images/products/product1.png"
         }
       ],
       "general_price": 15.5
@@ -46,10 +46,10 @@
       },
       "images": [
         {
-          "url": "https://images.epagine.fr/263/9782081473263_1_75.jpg"
+          "url": "/images/products/product2.png"
         },
         {
-          "url": "https://images.epagine.fr/263/9782081473263_1_75.jpg"
+          "url": "/images/products/product2.png"
         }
       ],
       "general_price": 15.5
@@ -73,10 +73,10 @@
       },
       "images": [
         {
-          "url": "https://m.media-amazon.com/images/I/81MpFurNEFL._SY522_.jpg"
+          "url": "/images/products/fullwidth.png"
         },
         {
-          "url": "https://m.media-amazon.com/images/I/81MpFurNEFL._SY522_.jpg"
+          "url": "/images/products/fullwidth.png"
         }
       ],
       "general_price": 17.0
@@ -100,10 +100,37 @@
       },
       "images": [
         {
-          "url": "https://images.dassault-aviation.com/w_980,f_auto,q_auto,g_center,dpr_auto,c_fill/wp-auto-upload/1/files/2024/01/petitprince.jpg"
+          "url": "/images/products/product4.png"
         },
         {
-          "url": "https://images.dassault-aviation.com/w_980,f_auto,q_auto,g_center,dpr_auto,c_fill/wp-auto-upload/1/files/2024/01/petitprince.jpg"
+          "url": "/images/products/product4.png"
+        }
+      ],
+      "general_price": 14.0
+    },
+    {
+      "title": "Le Petit Prince",
+      "author": "Antoine de Saint-Exupéry",
+      "description": "Un conte poétique et philosophique sur l’amitié, l’amour et le sens de la vie.",
+      "formats": {
+        "Poche": {
+          "price": 6.5
+        },
+        "Grand format": {
+          "price": 14.0
+        }
+      },
+      "cover_colors": {
+        "yellow": 0.5,
+        "blue": 0.7,
+        "green": 0.0
+      },
+      "images": [
+        {
+          "url": "/images/products/product5.png"
+        },
+        {
+          "url": "/images/products/product5.png"
         }
       ],
       "general_price": 14.0

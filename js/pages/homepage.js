@@ -16,8 +16,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Mapper données JSON -> attributs du composant
     const imageUrl = book.images?.[0]?.url || ''
-    const title1 = book.title
-    const title2 = book.author
+    const title1 = book.author
+    const title2 = book.title
     const price = `${book.general_price.toFixed(2)}€`
 
     card.setAttribute('image-url', imageUrl)
@@ -25,14 +25,17 @@ document.addEventListener('DOMContentLoaded', async () => {
     card.setAttribute('title2', title2)
     card.setAttribute('price', price)
 
+    // Ajout du lien vers la page produit
+    card.setAttribute('link', `/pages/configurateur.html?id=${index}`)
+
     // Placement selon l'index
     if (index < 2) {
-      container1.appendChild(card) // 2 premières cartes
+      container1.appendChild(card)
     } else if (index === 2) {
-      card.setAttribute('full-width', '') // ajouter full-width
-      containerFull.appendChild(card) // 1 carte full
+      card.setAttribute('full-width', '')
+      containerFull.appendChild(card)
     } else {
-      container2.appendChild(card) // les suivantes
+      container2.appendChild(card)
     }
   })
 })

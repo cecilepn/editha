@@ -9,9 +9,9 @@ class Header extends HTMLElement {
         </div>
         <nav aria-label="Navigation principale">
           <ul>
-            <li><a href="/pages/configurateur.html">Configurateur</a></li>
-            <li><a href="/pages/a-propos.html">À propos</a></li>
-            <li><a href="/pages/connnexion.html">Connexion</a></li>
+            <li><a href="/pages/configurateur.html" class="link">Configurateur</a></li>
+            <li><a href="/pages/a-propos.html" class="link">À propos</a></li>
+            <li><a href="/pages/connnexion.html" class="link">Connexion</a></li>
             <li>
               <form action="/pages/search.html" method="get" role="search" aria-label="Recherche">
                 <label for="header-search" class="visually-hidden"></label>
@@ -20,7 +20,7 @@ class Header extends HTMLElement {
                 </a>
               </form>
             </li>
-            <li><a href="/pages/panier.html">Panier</a></li>
+            <li><a href="/pages/panier.html" class="link">Panier</a></li>
           </ul>
           <button class="burger" aria-label="Menu" type="button" aria-expanded="false" aria-controls="burger-modal">
             <span></span>
@@ -37,11 +37,11 @@ class Header extends HTMLElement {
             </button>
             <nav aria-label="Navigation mobile">
               <ul>
-                <li><a href="index.html">Boutique</a></li>
-                <li><a href="pages/about.html">À propos</a></li>
-                <li><a href="pages/contact.html">Connexion</a></li>
-                <li><a href="pages/search.html">Recherche</a></li>
-                <li><a href="pages/cart.html">Panier</a></li>
+                <li><a href="index.html" class="link">Boutique</a></li>
+                <li><a href="pages/about.html" class="link">À propos</a></li>
+                <li><a href="pages/contact.html" class="link">Connexion</a></li>
+                <li><a href="pages/search.html" class="link">Recherche</a></li>
+                <li><a href="pages/cart.html" class="link">Panier</a></li>
               </ul>
             </nav>
           </div>

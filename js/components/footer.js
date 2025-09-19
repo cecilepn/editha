@@ -26,10 +26,10 @@ class Footer extends HTMLElement {
             <span class="h6 legal-copyright">&copy; BOOKS, 2025</span>
             <nav aria-label="Liens légaux">
               <ul>
-                <li><a href="/confidentiality">Politique de confidentialité</a></li>
-                <li><a href="/privacy">Conditions générales de vente</a></li>
-                <li><a href="/cookies">Cookie policy</a></li>
-                <li><a href="/legal">Mentions légales</a></li>
+                <li class="link"><a href="/confidentiality">Politique de confidentialité</a></li>
+                <li class="link"><a href="/privacy">Conditions générales de vente</a></li>
+                <li class="link"><a href="/cookies">Cookie policy</a></li>
+                <li class="link"><a href="/legal">Mentions légales</a></li>
               </ul>
             </nav>
           </div>

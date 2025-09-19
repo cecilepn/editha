@@ -3,121 +3,26 @@ import { updatePrice } from '../utils/calculatePrice.js'
 import { showErrorMessage } from '../utils/showError.js'
 import { storage } from '../utils/handleLocalStorage.js'
 
-// Produit courant pour recalculer le prix depuis n'importe où
+// Produit courant global
 let currentProduct = null
 
-// Affichage des données
 document.addEventListener('DOMContentLoaded', async () => {
   const products = await fetchProducts()
   if (!products.length) return
 
-  const mainProduct = products[0]
-  currentProduct = mainProduct
+  currentProduct = products[0]
 
-  // Initialiser les informations du produit
-  initProductInfo(mainProduct)
-
-  // Initialiser les options (formats et couleurs)
-  initProductOptions(mainProduct)
-
-  // Initialiser le texte personnalisé
+  // Initialisations
+  initProductInfo(currentProduct)
+  initProductOptions(currentProduct)
   initCustomText()
-
-  // Initialiser les recommandations
   initRecommendations(products.slice(1, 4))
-  if (products.length > 0) {
-    const mainProduct = products[0]
 
-    // Principales informations
-    const productImage = document.querySelector('.productImage')
-    const productTitle = document.querySelector('.productInfos h1')
-    const productDescription = document.querySelector('.productInfos p')
-
-    productImage.src = mainProduct.images[0].url
-    productImage.alt = mainProduct.title
-    productTitle.textContent = mainProduct.title
-    productDescription.textContent = mainProduct.description
-
-    // Zone de prix
-    const priceElement = document.createElement('p')
-    priceElement.classList.add('productPrice', 'h4')
-    document.querySelector('.productInfos').appendChild(priceElement)
-
-    // Formats options
-    const formatsFieldset = document.querySelector(
-      '.productOptions fieldset:nth-of-type(1)'
-    )
-    formatsFieldset.innerHTML = '<legend>Format</legend>'
-
-    Object.entries(mainProduct.formats).forEach(([format, details], index) => {
-      const id = `format-${index}`
-      const option = document.createElement('div')
-      option.classList.add('flex', 'items-center', 'gap-10')
-
-      option.innerHTML = `
-        <input type="radio" id="${id}" name="format" value="${format}" />
-        <label for="${id}">${format}</label>
-      `
-      formatsFieldset.appendChild(option)
-    })
-
-    // Colors options
-    const colorsFieldset = document.querySelector(
-      '.productOptions fieldset:nth-of-type(2)'
-    )
-    colorsFieldset.innerHTML = '<legend>Couleurs</legend>'
-
-    Object.keys(mainProduct.cover_colors).forEach((color, index) => {
-      const id = `color-${index}`
-      const option = document.createElement('div')
-      option.classList.add('flex', 'items-center', 'gap-10')
-
-      option.innerHTML = `
-        <input type="radio" id="${id}" name="color" value="${color}" />
-        <label for="${id}"><span class="sr-only">${color}</span></label>
-      `
-      colorsFieldset.appendChild(option)
-    })
-
-    // Listeners sur les options
-    document.querySelectorAll('input[name="format"]').forEach(input => {
-      input.addEventListener('change', () => updatePrice(mainProduct))
-    })
-
-    document.querySelectorAll('input[name="color"]').forEach(input => {
-      input.addEventListener('change', () => updatePrice(mainProduct))
-    })
-
-    // Listener sur le champ texte personnalisé
-    document.querySelector('#textcustom').addEventListener('input', () => {
-      updatePrice(mainProduct)
-    })
-
-    // Initialisation du prix
-    updatePrice(mainProduct)
-
-    // Affichage des produits recommandées
-    const recommendationsContainer = document.querySelector('#recommendations')
-    recommendationsContainer.innerHTML = ''
-
-    products.slice(1, 4).forEach(product => {
-      const card = document.createElement('div')
-      card.classList.add('productReco')
-
-      card.innerHTML = `
-        <img src="${product.images[0].url}" alt="${product.title}" class="productRecoImg w-full object-cover"/>
-        <div class="flex flex-col gap-10">
-          <h3>${product.title}</h3>
-          <p>Auteur : ${product.author}</p>
-          <p>${product.general_price} €</p>
-        </div>
-      `
-      recommendationsContainer.appendChild(card)
-    })
-  }
+  // Premier calcul du prix
+  updatePrice(currentProduct)
 })
 
-// Initialise les informations du produit principal
+//  INFOS PRODUIT
 const initProductInfo = product => {
   const productImage = document.querySelector('.productImage')
   const productTitle = document.querySelector('.productInfos h1')
@@ -127,24 +32,32 @@ const initProductInfo = product => {
   productImage.alt = product.title
   productTitle.textContent = product.title
   productDescription.textContent = product.description
+
+  // Ajouter prix si pas déjà présent
+  if (!document.querySelector('.productPrice')) {
+    const priceElement = document.createElement('p')
+    priceElement.classList.add('productPrice', 'h4')
+    document.querySelector('.productInfos').appendChild(priceElement)
+  }
 }
 
-// Initialise et gère les options du produit (formats et couleurs)
+// OPTIONS PRODUIT
 const initProductOptions = product => {
   // Formats
   const formatsFieldset = document.querySelector(
     '.productOptions fieldset:nth-of-type(1)'
   )
   formatsFieldset.innerHTML = '<legend>Format</legend>'
-
   Object.entries(product.formats).forEach(([format, details], index) => {
-    const option = document.createElement('div')
-    option.classList.add('flex', 'items-center', 'gap-10')
-    option.innerHTML = `
-      <input type="radio" id="format-${index}" name="format" value="${format}" />
-      <label for="format-${index}">${format}</label>
+    formatsFieldset.insertAdjacentHTML(
+      'beforeend',
+      `
+      <div class="flex items-center gap-10">
+        <input type="radio" id="format-${index}" name="format" value="${format}" />
+        <label for="format-${index}">${format}</label>
+      </div>
     `
-    formatsFieldset.appendChild(option)
+    )
   })
 
   // Couleurs
@@ -152,86 +65,83 @@ const initProductOptions = product => {
     '.productOptions fieldset:nth-of-type(2)'
   )
   colorsFieldset.innerHTML = '<legend>Couleurs</legend>'
-
   Object.keys(product.cover_colors).forEach((color, index) => {
-    const option = document.createElement('div')
-    option.classList.add('flex', 'items-center', 'gap-10')
-    option.innerHTML = `
-      <input type="radio" id="color-${index}" name="color" value="${color}" />
-      <label for="color-${index}"><span class="sr-only">${color}</span></label>
+    colorsFieldset.insertAdjacentHTML(
+      'beforeend',
+      `
+      <div class="flex items-center gap-10">
+        <input type="radio" id="color-${index}" name="color" value="${color}" />
+        <label for="color-${index}"><span class="sr-only">${color}</span></label>
+      </div>
     `
-    colorsFieldset.appendChild(option)
+    )
   })
 
-  // Restaurer et gérer la sauvegarde des options
-  setTimeout(() => {
-    const savedSettings = storage.load()
-    if (savedSettings) {
-      // Restaurer les sélections
-      if (savedSettings.selectedFormat) {
-        const formatRadio = document.querySelector(
-          `input[name="format"][value="${savedSettings.selectedFormat}"]`
-        )
-        if (formatRadio) formatRadio.checked = true
-      }
-      if (savedSettings.selectedColor) {
-        const colorRadio = document.querySelector(
-          `input[name="color"][value="${savedSettings.selectedColor}"]`
-        )
-        if (colorRadio) colorRadio.checked = true
-      }
+  // Restauration des sélections
+  const saved = storage.load()
+  if (saved) {
+    if (saved.selectedFormat) {
+      const formatRadio = document.querySelector(
+        `input[name="format"][value="${saved.selectedFormat}"]`
+      )
+      if (formatRadio) formatRadio.checked = true
     }
+    if (saved.selectedColor) {
+      const colorRadio = document.querySelector(
+        `input[name="color"][value="${saved.selectedColor}"]`
+      )
+      if (colorRadio) colorRadio.checked = true
+    }
+  }
 
-    // Ajouter les listeners
-    document
-      .querySelectorAll('input[name="format"], input[name="color"]')
-      .forEach(radio => {
-        radio.addEventListener('change', saveAllSettings)
+  // Listeners
+  document
+    .querySelectorAll('input[name="format"], input[name="color"]')
+    .forEach(input => {
+      input.addEventListener('change', () => {
+        saveAllSettings()
+        if (currentProduct) updatePrice(currentProduct)
       })
-
-    // Recalcul du prix après restauration
-    if (currentProduct) updatePrice(currentProduct)
-  }, 100)
+    })
 }
 
-// Initialise les recommandations de produits
+// RECOMMANDATIONS
 const initRecommendations = products => {
   const recommendationsContainer = document.querySelector('#recommendations')
   recommendationsContainer.innerHTML = ''
-
   products.forEach(product => {
-    const card = document.createElement('div')
-    card.classList.add('productReco')
-    card.innerHTML = `
-      <img src="${product.images[0].url}" alt="${product.title}" class="productRecoImg w-full object-cover"/>
-      <div class="flex flex-col gap-10">
-        <h3>${product.title}</h3>
-        <p>Auteur : ${product.author}</p>
-        <p>Prix : ${product.general_price} €</p>
+    recommendationsContainer.insertAdjacentHTML(
+      'beforeend',
+      `
+      <div class="productReco">
+        <img src="${product.images[0].url}" alt="${product.title}" class="productRecoImg w-full object-cover"/>
+        <div class="flex flex-col gap-10">
+          <h3>${product.title}</h3>
+          <p>Auteur : ${product.author}</p>
+          <p>Prix : ${product.general_price} €</p>
+        </div>
       </div>
     `
-    recommendationsContainer.appendChild(card)
+    )
   })
 }
 
-// Initialise le système de texte personnalisé
+// TEXTE PERSONNALISÉ
 const initCustomText = () => {
   const textInput = document.getElementById('textcustom')
   if (!textInput) return
 
-  // Ajouter les contrôles
-  const controls = document.createElement('div')
-  controls.className = 'flex flex-col gap-20'
-  controls.innerHTML = `
+  // Ajout des contrôles
+  const controls = `
     <div class="optionsCustomInput flex flex-col gap-20">
-     <div class="flex gap-10 items-center">
-      <label for="textSize">Taille:</label>
-      <select id="textSize" class="text-size-selector">
-        <option value="14">Petite</option>
-        <option value="18" selected>Standard</option>
-        <option value="24">Grande</option>
-        <option value="32">Très grande</option>
-      </select>
+      <div class="flex gap-10 items-center">
+        <label for="textSize">Taille:</label>
+        <select id="textSize" class="text-size-selector">
+          <option value="14">Petite</option>
+          <option value="18" selected>Standard</option>
+          <option value="24">Grande</option>
+          <option value="32">Très grande</option>
+        </select>
       </div>
       <div class="flex gap-10 items-center">
         <label for="textFont">Police:</label>
@@ -252,17 +162,16 @@ const initCustomText = () => {
           <label for="colorWhite" class="color-option color-white"></label>
           <input type="radio" id="colorRed" name="textColor" value="#FF0000" />
           <label for="colorRed" class="color-option color-red"></label>
+        </div>
       </div>
     </div>
-    </div>
-    <div id="errorMessage" class="error-message" style="display: none; color: red; font-size: 12px;"></div>
+    <div id="errorMessage" class="error-message" style="display:none;color:red;font-size:12px;"></div>
   `
-  textInput.parentElement.appendChild(controls)
+  textInput.parentElement.insertAdjacentHTML('beforeend', controls)
 
-  // Créer l'élément texte overlay
+  // Overlay
   const container = document.querySelector('.product-image-container')
   if (!container) return
-
   const textOverlay = document.createElement('div')
   textOverlay.id = 'customTextOverlay'
   textOverlay.className = 'custom-text-overlay'
@@ -274,41 +183,35 @@ const initCustomText = () => {
   `
   container.appendChild(textOverlay)
 
-  // Restaurer les paramètres sauvegardés
-  const savedSettings = storage.load()
-  if (savedSettings) {
-    textInput.value = savedSettings.text || ''
-    textOverlay.textContent = savedSettings.text || ''
-    textOverlay.style.display = savedSettings.text ? 'block' : 'none'
-
-    if (savedSettings.fontSize) {
-      document.getElementById('textSize').value = savedSettings.fontSize
-      textOverlay.style.fontSize = savedSettings.fontSize + 'px'
+  // Restauration depuis storage
+  const saved = storage.load()
+  if (saved) {
+    textInput.value = saved.text || ''
+    textOverlay.textContent = saved.text || ''
+    textOverlay.style.display = saved.text ? 'block' : 'none'
+    if (saved.fontSize) {
+      document.getElementById('textSize').value = saved.fontSize
+      textOverlay.style.fontSize = saved.fontSize + 'px'
     }
-    if (savedSettings.fontFamily) {
-      document.getElementById('textFont').value = savedSettings.fontFamily
-      textOverlay.style.fontFamily = savedSettings.fontFamily
+    if (saved.fontFamily) {
+      document.getElementById('textFont').value = saved.fontFamily
+      textOverlay.style.fontFamily = saved.fontFamily
     }
-    if (savedSettings.color) {
+    if (saved.color) {
       const colorRadio = document.querySelector(
-        `input[name="textColor"][value="${savedSettings.color}"]`
+        `input[name="textColor"][value="${saved.color}"]`
       )
-      if (colorRadio) {
-        colorRadio.checked = true
-        textOverlay.style.color = savedSettings.color
-      }
+      if (colorRadio) colorRadio.checked = true
+      textOverlay.style.color = saved.color
     }
-    if (savedSettings.position) {
-      textOverlay.style.left = savedSettings.position.left + 'px'
-      textOverlay.style.top = savedSettings.position.top + 'px'
+    if (saved.position) {
+      textOverlay.style.left = saved.position.left + 'px'
+      textOverlay.style.top = saved.position.top + 'px'
       textOverlay.style.transform = 'none'
     }
-
-    // Mettre à jour le prix après restauration du texte
-    if (currentProduct) updatePrice(currentProduct)
   }
 
-  // Event listeners
+  // Listeners
   textInput.addEventListener('input', e => {
     textOverlay.textContent = e.target.value
     textOverlay.style.display = e.target.value ? 'block' : 'none'
@@ -343,7 +246,7 @@ const initCustomText = () => {
     })
   })
 
-  // Déplacement souris uniquement (desktop)
+  // Déplacement (drag & drop desktop)
   let isDragging = false
   textOverlay.addEventListener('mousedown', e => {
     isDragging = true
@@ -356,17 +259,10 @@ const initCustomText = () => {
 
     const handleMouseMove = e => {
       if (!isDragging) return
-      const deltaX = e.clientX - startX
-      const deltaY = e.clientY - startY
-      let newLeft = startLeft + deltaX
-      let newTop = startTop + deltaY
-
-      // Contraintes
-      const maxLeft = containerRect.width - rect.width
-      const maxTop = containerRect.height - rect.height
-      newLeft = Math.max(0, Math.min(newLeft, maxLeft))
-      newTop = Math.max(0, Math.min(newTop, maxTop))
-
+      let newLeft = startLeft + (e.clientX - startX)
+      let newTop = startTop + (e.clientY - startY)
+      newLeft = Math.max(0, Math.min(newLeft, containerRect.width - rect.width))
+      newTop = Math.max(0, Math.min(newTop, containerRect.height - rect.height))
       textOverlay.style.left = newLeft + 'px'
       textOverlay.style.top = newTop + 'px'
       textOverlay.style.transform = 'none'
@@ -385,7 +281,7 @@ const initCustomText = () => {
   })
 }
 
-// Sauvegarde tous les paramètres actuels
+// SAUVEGARDE
 const saveAllSettings = () => {
   try {
     const textInput = document.getElementById('textcustom')
@@ -409,6 +305,7 @@ const saveAllSettings = () => {
       selectedColor: document.querySelector('input[name="color"]:checked')
         ?.value
     }
+
     storage.save(settings)
     if (currentProduct) updatePrice(currentProduct)
   } catch (error) {

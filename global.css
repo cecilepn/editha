@@ -12,13 +12,10 @@
   --font-sans: 'Inter', Arial, sans-serif;
   --font-serif: 'Merriweather', Georgia, serif;
 }
-a,
-link {
+.link {
   text-decoration: none;
 }
-
-a:hover,
-link:hover {
+.link:hover {
   cursor: pointer;
   text-decoration: underline;
   text-underline-offset: 3px;

@@ -7,11 +7,12 @@ class Card extends HTMLElement {
     const title2 = this.getAttribute('title2') || 'Lorem ipsum dolor sit amet.'
     const price = this.getAttribute('price') || '45,00€'
     const fullWidth = this.hasAttribute('full-width')
+    const link = this.getAttribute('link') || '#'
 
     this.innerHTML = `
-      <div class="card flex flex-col gap-20">
+      <a href="${link}" class="card flex flex-col gap-20 no-underline text-black">
         <div class="card-container-img ${fullWidth ? 'full-width' : ''}">
-          <img src="${imageUrl}" alt="" class="h-full w-full" />
+          <img src="${imageUrl}" alt="${title1}" class="h-full w-full" />
         </div>
         <div class="product-infos flex flex-col gap-20">
           <div class="flex flex-col gap-10 h4">
@@ -20,7 +21,7 @@ class Card extends HTMLElement {
           </div>
           <p class="body-m font-bold">${price}</p>
         </div>
-      </div>
+      </a>
     `
   }
 }

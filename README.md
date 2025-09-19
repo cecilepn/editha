@@ -1,51 +1,83 @@
-# Editha
+# 📚 Editha
 
-Editha est un site e-commerce de vente de livres à la couverture personnalisable dans le cadre d'un projet étudiant en M1 dev à l'ECV.
+**Editha** est un site e-commerce de vente de livres à couverture personnalisable.  
+Ce projet a été réalisé dans le cadre d’un projet étudiant en **M1 Développement à l’ECV**.
 
-# Langages
+---
 
-HTML, CSS, JS
+## Langages & technologies
 
-# Collaborateurs
+- **HTML**
+- **CSS**
+- **JavaScript**
 
-Cécile PHAN NGUYEN : https://github.com/cecilepn / DEV
-Andy RABARISON : https://github.com/Rabarison-Andy / DEV
+---
 
-# Fonctionnalités
+## Collaborateurs
 
-# Update J2 :
+- [Cécile PHAN NGUYEN](https://github.com/cecilepn) — Développement
+- [Andy RABARISON](https://github.com/Rabarison-Andy) — Développement
 
-- Structure du projet : styles, components, utils ... (Cécile)
-- Intégration mobile et desktop de la page configurateur avec les données en dur (Cécile)
-- Intégration mobile et desktop de la homepage avec les données en dur (Andy)
+---
 
-# Update J4 :
+## Fonctionnalités
 
-- Intégration mobile et desktop de la page panier (Cécile)
-- Finalisation de la homepage en mobile avec logique de menu et popin (Andy)
-- Intégration des logiques suivantes :
-  - récupération des données du products json et l'injection de ces données dans les pages (Cécile)
-  - calcul dynamique de prix (Cécile)
-  - placement et personnalisation textuelle sur le produit en temps réel (Andy)
-  - ajout et affichage des produits dans la page panier encore en cours de développement (Cécile)
-  - sauvegarde des données temporaires en cours de développement (Andy)
+- Configuration en temps réel de la couverture (placement et personnalisation textuelle).
+- Récupération des données produits via un fichier JSON et injection dynamique dans les pages.
+- Calcul dynamique du prix en fonction des choix de personnalisation.
+- Gestion d’un panier (ajout, affichage des produits, sauvegarde temporaire des données).
+- Pages responsives (mobile & desktop) : homepage, configurateur, panier.
 
-# Update J5 :
+---
 
-- Refactorisation du fichier productConfigurator (Cécile)
-- Mise à jour du calcul du prix en fonction des données temporaires (Andy)
-- Ajustement de la structure et du style de la homepage (Cécile)
-- Finalisation ajout dans le panier
+## Avancement du projet
 
-# A propos de la structure
+### **Update J2**
 
-Nous avons structuré le projet de la façon suivante : - Images qui comprend des sous-dossiers (svg, png) - js qui comprend deux dossiers "components" et "utils" :
--> components : pour les éléments répétables (ex: header, footer, addtocartbutton ou productCard)
--> utils : pour les futurs fonctionnalités - json qui contient tableau de données qui correspond à nos produits - dossier pages qui contient toutes les pages annexes de la homepage - dossier styles qui comprends trois dossiers :
--> components et pages pour les éléments concernés
--> core pour le global - global.css qui contient les imports généraux du style - index.html qui correspond à la homepage - script.js qui contient les imports de script de certains composants
+- Création de la structure du projet : `styles`, `components`, `utils`... (Cécile)
+- Intégration mobile et desktop de la **page configurateur** avec données statiques (Cécile).
+- Intégration mobile et desktop de la **homepage** avec données statiques (Andy).
 
-# Difficultés rencontrés
+### **Update J4**
 
-- Absence du J3 nous pénalise sur le développement des fonctionnalités sur lesquelles on voulait travailler (partage sur les RS - côté Cécile) et impacte sur la qualité de rendu et détails.
-- Frustration lié à l'UI, très simple et manque d'uniformisation.
+- Intégration mobile et desktop de la **page panier** (Cécile).
+- Finalisation de la homepage en mobile avec logique de menu et popin (Andy).
+- Développement des logiques principales :
+  - Récupération des données produits (Cécile).
+  - Calcul dynamique des prix (Cécile).
+  - Placement et personnalisation en temps réel sur le produit (Andy).
+  - Ajout et affichage des produits dans le panier (en cours, Cécile).
+  - Sauvegarde temporaire des données (en cours, Andy).
+
+### **Update J5**
+
+- Refactorisation du fichier `productConfigurator` (Cécile).
+- Mise à jour du calcul des prix en fonction des données temporaires (Andy).
+- Ajustements structure & styles de la homepage (Cécile).
+- Finalisation de l’ajout au panier.
+
+---
+
+## Structure du projet
+
+- **images/** → ressources visuelles (avec sous-dossiers `svg`, `png`).
+- **js/**
+  - **components/** : éléments réutilisables (header, footer, `addToCartButton`, `productCard`...).
+  - **utils/** : fonctions utilitaires (ex : `fetchData`).
+- **json/** → données produits.
+- **pages/** → pages annexes à la homepage.
+- **styles/**
+  - **core/** → styles globaux.
+  - **components/** et **pages/** → styles spécifiques.
+  - **global.css** → import des styles principaux.
+- **index.html** → homepage.
+- **script.js** → imports de scripts.
+
+---
+
+## Difficultés rencontrées
+
+- Organisation de la structure du projet, qui a pris plus de temps que prévu.
+- Difficultés liées à l’utilisation de **Git** : résolution de conflits compliquée, surtout pour l’un de nous qui n’était pas encore à l’aise avec les commandes.
+- Perte du **Jour 3**, ce qui a pénalisé l’avancée (ex : partage sur réseaux sociaux non finalisé, slider images).
+- Frustrations sur l’UI : design simple et manque d’uniformisation.

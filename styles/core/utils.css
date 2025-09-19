@@ -16,13 +16,40 @@
   background-color: var(--color-white);
 }
 
-/* color text */
+/* text */
 
 .text-black {
   color: var(--color-black);
 }
 .text-white {
   color: var(--color-white);
+}
+.font-sans {
+  font-family: var(--font-sans);
+}
+.font-serif {
+  font-family: var(--font-serif);
+}
+.font-bold {
+  font-weight: bold;
+}
+.font-italic {
+  font-style: italic;
+}
+.text-center {
+  text-align: center;
+}
+.text-sm {
+  font-size: 0.875rem;
+}
+.text-base {
+  font-size: 1rem;
+}
+.text-lg {
+  font-size: 1.125rem;
+}
+.text-xl {
+  font-size: 1.25rem;
 }
 
 /* Padding global */
@@ -124,7 +151,6 @@
 .gap-5 {
   gap: 5px;
 }
-
 .gap-10 {
   gap: 10px;
 }
@@ -144,28 +170,6 @@
   gap: 60px;
 }
 
-/* Typography */
-.font-sans {
-  font-family: var(--font-sans);
-}
-.font-serif {
-  font-family: var(--font-serif);
-}
-.text-sm {
-  font-size: 0.875rem;
-}
-.text-base {
-  font-size: 1rem;
-}
-.text-lg {
-  font-size: 1.125rem;
-}
-.text-xl {
-  font-size: 1.25rem;
-}
-.font-bold {
-  font-weight: 700;
-}
 /* Flex & Grid */
 .flex {
   display: flex;
